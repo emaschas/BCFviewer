@@ -14,7 +14,9 @@ namespace BCFviewer {
   /// Only one of them shall be defined, the other shall be null
   /// </summary>
   public class BCFTreeNode : TreeNode {
+    ///<summary>Added property : Topic NodeTopic</summary>
     public Topic NodeTopic;
+    ///<summary>Added property : Comment NodeComment</summary>
     public Comment NodeComment;
   }
   
@@ -44,6 +46,7 @@ namespace BCFviewer {
     }
 
     /// <Summary> Add a Comment in the tree node of the Topic </Summary>
+    /// <param name="topic">Topic owning this comment</param>
     /// <param name="comment">Comment to be added in tree node of a Topic</param>
     private BCFTreeNode AddComment(BCFTreeNode topic, Comment comment) {
       BCFTreeNode tn = new BCFTreeNode();

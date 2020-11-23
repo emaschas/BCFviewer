@@ -14,12 +14,12 @@ using System.IO.Compression;
 using System.Globalization;
 #endregion
 
-/// <summary>
-/// BCFclass name space :<br/>
-/// Contains the structures and the methods to read a BCF file.<br/>
-/// BCF : BIM Collaboration Format<br/>
-/// See <see>https://technical.buildingsmart.org/standards/bcf/</see>
-/// </summary>
+// <summary>
+// BCFclass name space :<br/>
+// Contains the structures and the methods to read a BCF file.<br/>
+// BCF : BIM Collaboration Format<br/>
+// See <see>https://technical.buildingsmart.org/standards/bcf/</see>
+// </summary>
 namespace BCFclass {
 
   #region "BCF Structures"
@@ -38,47 +38,85 @@ namespace BCFclass {
   ///  -  <c>Image</c> : Content of the snapshot file (bitmap)
   /// </summary>
   public class Viewpoint {
+    ///<summary>GUID : Globally Unique Identifier</summary>
     public string GUID             {get;set;}
+    ///<summary>Index : Index of the viewpoint</summary>
     public string Index            {get;set;}
+    ///<summary>Bcfv : view position definition file name</summary>
     public string Bcfv             {get;set;}
+    ///<summary>Snapshot : snapshot file name</summary>
     public string Snapshot         {get;set;}
+    ///<summary>CamX, CamY, CamZ : Position of the Camera (in meters)</summary>
     public double CamX             {get;set;}
+    ///<summary>CamX, CamY, CamZ : Position of the Camera (in meters)</summary>
     public double CamY             {get;set;}
+    ///<summary>CamX, CamY, CamZ : Position of the Camera (in meters)</summary>
     public double CamZ             {get;set;}
+    ///<summary>DirX, DirY, DirZ : View direction</summary>
     public double DirX             {get;set;}
+    ///<summary>DirX, DirY, DirZ : View direction</summary>
     public double DirY             {get;set;}
+    ///<summary>DirX, DirY, DirZ : View direction</summary>
     public double DirZ             {get;set;}
+    ///<summary>UpX, UpY, UpZ : Up direction</summary>
     public double UpX              {get;set;}
+    ///<summary>UpX, UpY, UpZ : Up direction</summary>
     public double UpY              {get;set;}
+    ///<summary>UpX, UpY, UpZ : Up direction</summary>
     public double UpZ              {get;set;}
+    ///<summary>Field : Field of view in degress</summary>
     public double Field            {get;set;}
+    ///<summary>Components : List of visible components</summary>
     public List<string> Components {get;set;}
+    ///<summary>Image : Content (Bitmap) of the snapshot file </summary>
     public Bitmap Image            {get;set;}
   }
 
+  /// <summary> Comment Structure </summary>
   public class Comment {
+    ///<summary>Date : </summary>
     public string Date            {get;set;}
+    ///<summary>Author : </summary>
     public string Author          {get;set;}
+    ///<summary>Text : </summary>
     public string Text            {get;set;}
+    ///<summary>ModifiedDate : </summary>
     public string ModifiedDate    {get;set;}
+    ///<summary>ModifiedAuthor : </summary>
     public string ModifiedAuthor  {get;set;}
+    ///<summary>VPGuid : </summary>
     public string VPGuid          {get;set;}
+    ///<summary>Viewpoint : </summary>
     public Viewpoint Viewpoint    {get;set;}
   }
 
+  /// <summary> Topic Structure </summary>
   public class Topic {
+    ///<summary>ZipFile : </summary>
     public string ZipFile             {get;set;}
+    ///<summary>TopicType : </summary>
     public string TopicType           {get;set;}
+    ///<summary>TopicStatus : </summary>
     public string TopicStatus         {get;set;}
+    ///<summary>Title : </summary>
     public string Title               {get;set;}
+    ///<summary>Priority : </summary>
     public string Priority            {get;set;}
+    ///<summary>Index : </summary>
     public string Index               {get;set;}
+    ///<summary>CreationDate : </summary>
     public string CreationDate        {get;set;}
+    ///<summary>CreationAuthor : </summary>
     public string CreationAuthor      {get;set;}
+    ///<summary>ModifiedDate : </summary>
     public string ModifiedDate        {get;set;}
+    ///<summary>ModifiedAuthor : </summary>
     public string ModifiedAuthor      {get;set;}
+    ///<summary>Description : </summary>
     public string Description         {get;set;}
+    ///<summary>Comments : </summary>
     public List<Comment> Comments     {get;set;}
+    ///<summary>Viewpoints : </summary>
     public List<Viewpoint> Viewpoints {get;set;}
   }
 
@@ -128,7 +166,7 @@ namespace BCFclass {
     /// <summary> Read the Camera settings for the selected viewpoint.bcfv file </summary>
     /// <param name="bcfzip">ZipArchive in which the bcfv file is located</param>
     /// <param name="filename">Name of bcfv viewpoint file within the ZIP archive</param>
-    /// <param name="NewVP">Viewpoint in which the camera settings will be stored</param>
+    /// <param name="viewpoint">Viewpoint in which the camera settings will be stored</param>
     private void readBCFV(ZipArchive bcfzip, string filename, Viewpoint viewpoint) {
       ZipArchiveEntry bcfvzip = bcfzip.GetEntry(filename);
       // Default values

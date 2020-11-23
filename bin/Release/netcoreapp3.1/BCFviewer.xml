@@ -19,6 +19,120 @@
              -  <c>Image</c> : Content of the snapshot file (bitmap)
             </summary>
         </member>
+        <member name="P:BCFclass.Viewpoint.GUID">
+            <summary>GUID : Globally Unique Identifier</summary>
+        </member>
+        <member name="P:BCFclass.Viewpoint.Index">
+            <summary>Index : Index of the viewpoint</summary>
+        </member>
+        <member name="P:BCFclass.Viewpoint.Bcfv">
+            <summary>Bcfv : view position definition file name</summary>
+        </member>
+        <member name="P:BCFclass.Viewpoint.Snapshot">
+            <summary>Snapshot : snapshot file name</summary>
+        </member>
+        <member name="P:BCFclass.Viewpoint.CamX">
+            <summary>CamX, CamY, CamZ : Position of the Camera (in meters)</summary>
+        </member>
+        <member name="P:BCFclass.Viewpoint.CamY">
+            <summary>CamX, CamY, CamZ : Position of the Camera (in meters)</summary>
+        </member>
+        <member name="P:BCFclass.Viewpoint.CamZ">
+            <summary>CamX, CamY, CamZ : Position of the Camera (in meters)</summary>
+        </member>
+        <member name="P:BCFclass.Viewpoint.DirX">
+            <summary>DirX, DirY, DirZ : View direction</summary>
+        </member>
+        <member name="P:BCFclass.Viewpoint.DirY">
+            <summary>DirX, DirY, DirZ : View direction</summary>
+        </member>
+        <member name="P:BCFclass.Viewpoint.DirZ">
+            <summary>DirX, DirY, DirZ : View direction</summary>
+        </member>
+        <member name="P:BCFclass.Viewpoint.UpX">
+            <summary>UpX, UpY, UpZ : Up direction</summary>
+        </member>
+        <member name="P:BCFclass.Viewpoint.UpY">
+            <summary>UpX, UpY, UpZ : Up direction</summary>
+        </member>
+        <member name="P:BCFclass.Viewpoint.UpZ">
+            <summary>UpX, UpY, UpZ : Up direction</summary>
+        </member>
+        <member name="P:BCFclass.Viewpoint.Field">
+            <summary>Field : Field of view in degress</summary>
+        </member>
+        <member name="P:BCFclass.Viewpoint.Components">
+            <summary>Components : List of visible components</summary>
+        </member>
+        <member name="P:BCFclass.Viewpoint.Image">
+            <summary>Image : Content (Bitmap) of the snapshot file </summary>
+        </member>
+        <member name="T:BCFclass.Comment">
+            <summary> Comment Structure </summary>
+        </member>
+        <member name="P:BCFclass.Comment.Date">
+            <summary>Date : </summary>
+        </member>
+        <member name="P:BCFclass.Comment.Author">
+            <summary>Author : </summary>
+        </member>
+        <member name="P:BCFclass.Comment.Text">
+            <summary>Text : </summary>
+        </member>
+        <member name="P:BCFclass.Comment.ModifiedDate">
+            <summary>ModifiedDate : </summary>
+        </member>
+        <member name="P:BCFclass.Comment.ModifiedAuthor">
+            <summary>ModifiedAuthor : </summary>
+        </member>
+        <member name="P:BCFclass.Comment.VPGuid">
+            <summary>VPGuid : </summary>
+        </member>
+        <member name="P:BCFclass.Comment.Viewpoint">
+            <summary>Viewpoint : </summary>
+        </member>
+        <member name="T:BCFclass.Topic">
+            <summary> Topic Structure </summary>
+        </member>
+        <member name="P:BCFclass.Topic.ZipFile">
+            <summary>ZipFile : </summary>
+        </member>
+        <member name="P:BCFclass.Topic.TopicType">
+            <summary>TopicType : </summary>
+        </member>
+        <member name="P:BCFclass.Topic.TopicStatus">
+            <summary>TopicStatus : </summary>
+        </member>
+        <member name="P:BCFclass.Topic.Title">
+            <summary>Title : </summary>
+        </member>
+        <member name="P:BCFclass.Topic.Priority">
+            <summary>Priority : </summary>
+        </member>
+        <member name="P:BCFclass.Topic.Index">
+            <summary>Index : </summary>
+        </member>
+        <member name="P:BCFclass.Topic.CreationDate">
+            <summary>CreationDate : </summary>
+        </member>
+        <member name="P:BCFclass.Topic.CreationAuthor">
+            <summary>CreationAuthor : </summary>
+        </member>
+        <member name="P:BCFclass.Topic.ModifiedDate">
+            <summary>ModifiedDate : </summary>
+        </member>
+        <member name="P:BCFclass.Topic.ModifiedAuthor">
+            <summary>ModifiedAuthor : </summary>
+        </member>
+        <member name="P:BCFclass.Topic.Description">
+            <summary>Description : </summary>
+        </member>
+        <member name="P:BCFclass.Topic.Comments">
+            <summary>Comments : </summary>
+        </member>
+        <member name="P:BCFclass.Topic.Viewpoints">
+            <summary>Viewpoints : </summary>
+        </member>
         <member name="T:BCFclass.BCFfile">
             <summary> BCF file class </summary>
         </member>
@@ -41,7 +155,7 @@
             <summary> Read the Camera settings for the selected viewpoint.bcfv file </summary>
             <param name="bcfzip">ZipArchive in which the bcfv file is located</param>
             <param name="filename">Name of bcfv viewpoint file within the ZIP archive</param>
-            <param name="NewVP">Viewpoint in which the camera settings will be stored</param>
+            <param name="viewpoint">Viewpoint in which the camera settings will be stored</param>
         </member>
         <member name="M:BCFclass.BCFfile.ReadBCF(System.String,System.Boolean)">
             <summary> Load or Append a BCF File </summary> 
@@ -65,6 +179,12 @@
             Only one of them shall be defined, the other shall be null
             </summary>
         </member>
+        <member name="F:BCFviewer.BCFTreeNode.NodeTopic">
+            <summary>Added property : Topic NodeTopic</summary>
+        </member>
+        <member name="F:BCFviewer.BCFTreeNode.NodeComment">
+            <summary>Added property : Comment NodeComment</summary>
+        </member>
         <member name="T:BCFviewer.BCFform">
             <Summary> Main class of the BCFform </Summary>
         </member>
@@ -74,6 +194,7 @@
         </member>
         <member name="M:BCFviewer.BCFform.AddComment(BCFviewer.BCFTreeNode,BCFclass.Comment)">
             <Summary> Add a Comment in the tree node of the Topic </Summary>
+            <param name="topic">Topic owning this comment</param>
             <param name="comment">Comment to be added in tree node of a Topic</param>
         </member>
         <member name="M:BCFviewer.BCFform.#ctor">
