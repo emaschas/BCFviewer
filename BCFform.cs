@@ -3,10 +3,9 @@ using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Globalization;
-using BCF_Read;
+using BCFclass;
 
 namespace BCFviewer {
-
 
   /// <summary> 
   /// BCFTreeNode if a class derivated from TreeNode with additional properties : <br/>

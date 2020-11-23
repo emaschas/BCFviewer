@@ -14,7 +14,7 @@ using System.IO.Compression;
 using System.Globalization;
 #endregion
 
-namespace BCF_Read {
+namespace BCFclass {
 
   #region "BCF Structures"
 
