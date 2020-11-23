@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BCFviewer</name>
+    </assembly>
+    <members>
+        <member name="T:BCFclass.Viewpoint">
+            <summary> Viewpoint structure<br/>
+            The viewpoint includes :<br/>
+             -  <c>GUID</c> : Globally Unique Identifier<br/>
+             -  <c>Index</c> : Index of the viewpoint<br/>
+             -  <c>Bcfv</c> : view position definition file name<br/>
+             -  <c>Snapshot</c> : snapshot file name<br/>
+             -  <c>CamX</c>, CamY, CamZ : Position of the Camera (in meters)<br/>
+             -  <c>DirX</c>, DirY, DirZ : View direction<br/>
+             -  <c>UpX</c>, UpY, UpZ : Up direction<br/>
+             -  <c>Field</c> : Field of view in degress<br/>
+             -  <c>Components</c> : List of visible components<br/>
+             -  <c>Image</c> : Content of the snapshot file (bitmap)
+            </summary>
+        </member>
+        <member name="T:BCFclass.BCFfile">
+            <summary> BCF file class </summary>
+        </member>
+        <member name="F:BCFclass.BCFfile.TopicsList">
+            <summary> List of BCF Topics loaded in Navisworks </summary>
+        </member>
+        <member name="M:BCFclass.BCFfile.ReadXML(System.Xml.Linq.XElement,System.String)">
+            <summary> Utility to read an xml field </summary>
+            <returns> The value of the XML element or "-" if unset </returns>
+        </member>
+        <member name="M:BCFclass.BCFfile.ReadATT(System.Xml.Linq.XElement,System.String)">
+            <summary> Utility to read an xml attribute </summary>
+            <returns> The attribute value or "-" if unset </returns>
+        </member>
+        <member name="M:BCFclass.BCFfile.formatDate(System.String)">
+            <summary> Format an ISO date in readable string </summary>
+            <param name="isodate">Date in ISO format. Ex : 2014-10-16T14:35:29+00:00</param>
+        </member>
+        <member name="M:BCFclass.BCFfile.readBCFV(System.IO.Compression.ZipArchive,System.String,BCFclass.Viewpoint)">
+            <summary> Read the Camera settings for the selected viewpoint.bcfv file </summary>
+            <param name="bcfzip">ZipArchive in which the bcfv file is located</param>
+            <param name="filename">Name of bcfv viewpoint file within the ZIP archive</param>
+            <param name="NewVP">Viewpoint in which the camera settings will be stored</param>
+        </member>
+        <member name="M:BCFclass.BCFfile.ReadBCF(System.String,System.Boolean)">
+            <summary> Load or Append a BCF File </summary> 
+            <param name="FileName">Full path of the file to be loadded or appended </param>
+            <param name="Append">Load if false or Append if true </param>
+        </member>
+        <member name="M:BCFclass.BCFfile.#ctor(System.String,System.Boolean)">
+            <summary> BCFfile constructor </summary>
+        </member>
+        <member name="M:BCFclass.BCFfile.#ctor(System.String)">
+            <summary> BCFfile constructor overload </summary>
+        </member>
+        <member name="M:BCFclass.BCFfile.#ctor">
+            <summary> BCFfile constructor overload </summary>
+        </member>
+        <member name="T:BCFviewer.BCFTreeNode">
+            <summary> 
+            BCFTreeNode if a class derivated from TreeNode with additional properties : <br/>
+              - NodeTopic   : Topic reference if the TReeNodes refers to this type of element <br/>
+              - NodeComment : Comment reference if the TReeNodes refers to this type of element <br/>
+            Only one of them shall be defined, the other shall be null
+            </summary>
+        </member>
+        <member name="T:BCFviewer.BCFform">
+            <Summary> Main class of the BCFform </Summary>
+        </member>
+        <member name="M:BCFviewer.BCFform.AddTopic(BCFclass.Topic)">
+            <summary> Add a Topic in the tree </summary>
+            <param name="topic">Topic to be added in tree</param>
+        </member>
+        <member name="M:BCFviewer.BCFform.AddComment(BCFviewer.BCFTreeNode,BCFclass.Comment)">
+            <Summary> Add a Comment in the tree node of the Topic </Summary>
+            <param name="comment">Comment to be added in tree node of a Topic</param>
+        </member>
+        <member name="M:BCFviewer.BCFform.#ctor">
+            <summary> BCFform constructor </summary>
+        </member>
+        <member name="M:BCFviewer.BCFform.AddProperty(System.String,System.String)">
+            <summary> Add a set line with (name, value) in the list view </summary>
+            <param name="name">Name of the property</param>
+            <param name="value">Value of the property</param>
+        </member>
+        <member name="M:BCFviewer.BCFform.ShowTopicDetails(System.Object,System.Windows.Forms.TreeViewEventArgs)">
+            <summary> Fills the details of the selected Topic in the list view and the image </summary>
+            <param name="sender">Not used</param>
+            <param name="args">Not used</param>
+        </member>
+        <member name="M:BCFviewer.BCFform.OpenFile(System.Object,System.EventArgs)">
+            <summary> Response to the menu event : load BCF file </summary>
+            <param name="sender">Not used</param>
+            <param name="args">Not used</param>
+        </member>
+        <member name="M:BCFviewer.BCFform.AppendFile(System.Object,System.EventArgs)">
+            <summary> Response to the menu event : append BCF file </summary>
+            <param name="sender">Not used</param>
+            <param name="args">Not used</param>
+        </member>
+        <member name="M:BCFviewer.BCFform.LoadFile(System.Boolean)">
+            <summary> Read or Append a BCF file according to the Append parameter </summary>
+            <param name="Append">Load if false or Append if true </param>
+        </member>
+        <member name="M:BCFviewer.BCFform.About(System.Object,System.EventArgs)">
+            <summary> Response to the menu event : About </summary>
+            <param name="sender">Not used</param>
+            <param name="args">Not used</param>
+        </member>
+        <member name="M:BCFviewer.BCFform.ImageResize">
+            <summary> Move the vertical split to match the image ratio (Width / Height) </summary>
+        </member>
+        <member name="M:BCFviewer.BCFform.BCFform_Resize(System.Object,System.EventArgs)">
+            <summary> Response to the event that occurs when the form is resized </summary>
+            <param name="sender">Not used</param>
+            <param name="args">Not used</param>
+        </member>
+        <member name="M:BCFviewer.BCFform.HSplitterMoving(System.Object,System.Windows.Forms.SplitterCancelEventArgs)">
+            <summary> Response to the event that occurs when the horizontal splitter is moving </summary>
+            <param name="sender">Not used</param>
+            <param name="args">Not used</param>
+        </member>
+        <member name="M:BCFviewer.BCFform.HSplitterMoved(System.Object,System.Windows.Forms.SplitterEventArgs)">
+            <summary> Response to the event that occurs after the horizontal splitter has been moved </summary>
+            <param name="sender">Not used</param>
+            <param name="args">Not used</param>
+        </member>
+        <member name="M:BCFviewer.BCFform.formatDate(System.String)">
+            <summary> Format an ISO date in readable string </summary>
+            <param name="isodate">Date in ISO format. Ex : 2014-10-16T14:35:29+00:00</param>
+        </member>
+        <member name="M:BCFviewer.BCFform.Quit(System.Object,System.EventArgs)">
+            <summary> Response to the menu event : Quit </summary>
+            <param name="sender">Not used</param>
+            <param name="args">Not used</param>
+        </member>
+        <member name="F:BCFviewer.BCFform.components">
+            <summary>
+             Required designer variable.
+            </summary>
+        </member>
+        <member name="M:BCFviewer.BCFform.Dispose(System.Boolean)">
+            <summary>
+             Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:BCFviewer.BCFform.InitializeComponent">
+            <summary>
+             Required method for Designer support - do not modify
+             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:BCFviewer.Program.Main">
+            <summary>
+             The main entry point for the application.
+            </summary>
+        </member>
+    </members>
+</doc>

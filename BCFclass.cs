@@ -14,10 +14,29 @@ using System.IO.Compression;
 using System.Globalization;
 #endregion
 
+/// <summary>
+/// BCFclass name space :<br/>
+/// Contains the structures and the methods to read a BCF file.<br/>
+/// BCF : BIM Collaboration Format<br/>
+/// See <see>https://technical.buildingsmart.org/standards/bcf/</see>
+/// </summary>
 namespace BCFclass {
 
   #region "BCF Structures"
 
+  /// <summary> Viewpoint structure<br/>
+  /// The viewpoint includes :<br/>
+  ///  -  <c>GUID</c> : Globally Unique Identifier<br/>
+  ///  -  <c>Index</c> : Index of the viewpoint<br/>
+  ///  -  <c>Bcfv</c> : view position definition file name<br/>
+  ///  -  <c>Snapshot</c> : snapshot file name<br/>
+  ///  -  <c>CamX</c>, CamY, CamZ : Position of the Camera (in meters)<br/>
+  ///  -  <c>DirX</c>, DirY, DirZ : View direction<br/>
+  ///  -  <c>UpX</c>, UpY, UpZ : Up direction<br/>
+  ///  -  <c>Field</c> : Field of view in degress<br/>
+  ///  -  <c>Components</c> : List of visible components<br/>
+  ///  -  <c>Image</c> : Content of the snapshot file (bitmap)
+  /// </summary>
   public class Viewpoint {
     public string GUID             {get;set;}
     public string Index            {get;set;}
