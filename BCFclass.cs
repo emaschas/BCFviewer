@@ -7,10 +7,10 @@
 ///
 /// <h2>References</h2>
 /// Decsription of BCF files and their usage : <br/>
-/// <see>https://technical.buildingsmart.org/standards/bcf/</see>
+/// https://technical.buildingsmart.org/standards/bcf/<br/>
 /// The BCF file schema is detailed in :<br/>
-/// <see>https://github.com/buildingSMART/BCF-XML/tree/master/Documentation</see><br/>
-/// <hr/>
+/// https://github.com/buildingSMART/BCF-XML/tree/master/Documentation<br/>
+/// <hr>
 /// By Emmanuel Maschas - 10-2020
 
 #region "Usings"
@@ -110,8 +110,8 @@ namespace BCFclass {
   /// <summary> Topic Structure 
   /// <list type="table">
   /// <item><term>ZipFile</term><description>Full name of the *.bcfzip file, source of this Topic</description></item>
-  /// <item><term>TopicType</term><description>Type of topic<value><list type="bullet"><item>Comment</item><item>Issue</item><item>Request</item><item>Solution</item></list></value></description></item>
-  /// <item><term>TopicStatus</term><description>Status of the topic<value><list type="bullet"><item>Open</item><item>In Progress</item><item>Closed</item><item>ReOpened</item></list></value></description></item>
+  /// <item><term>TopicType</term><description>Type of topic</description></item>
+  /// <item><term>TopicStatus</term><description>Status of the topic</description></item>
   /// <item><term>Title</term><description>Title of the Topic</description></item>
   /// <item><term>Priority</term><description>Priority of the topic</description></item>
   /// <item><term>Index</term><description>Index of the topic</description></item>
@@ -124,7 +124,6 @@ namespace BCFclass {
   /// <item><term>Viewpoints</term><description>List of Viewpoints associated to the Topic</description></item>
   /// </list>
   /// </summary>
-  /// <remark>Used in BCFfile </remark>
   public class Topic {
     /// <summary>ZipFile : Full name of the *.bcfzip file, source of this Topic<br/>
     /// Since multiple BCF files may be appendedn this information is recorder for each individual Topic</summary>
@@ -351,8 +350,8 @@ namespace BCFclass {
     /// BCFclass :<br/>
     /// Contains the structures and the methods to read a BCF file.<br/>
     /// BCF : BIM Collaboration Format<br/>
-    /// See : <see>https://technical.buildingsmart.org/standards/bcf/</see><br/>
-    /// and : <see>https://github.com/buildingSMART/BCF-XML/tree/master/Documentation</see><br/>
+    /// See : https://technical.buildingsmart.org/standards/bcf/<br/>
+    /// and : https://github.com/buildingSMART/BCF-XML/tree/master/Documentation<br/>
     /// BCFfile constructors :<br/>
     /// - BCFfile() : Create an empty BCFfile object<br/>
     /// - BCFfile(filename) : Create a BCFfile object, and read the given file
@@ -366,8 +365,8 @@ namespace BCFclass {
     /// BCFclass :<br/>
     /// Contains the structures and the methods to read a BCF file.<br/>
     /// BCF : BIM Collaboration Format<br/>
-    /// See : <see>https://technical.buildingsmart.org/standards/bcf/</see><br/>
-    /// and : <see>https://github.com/buildingSMART/BCF-XML/tree/master/Documentation</see><br/>
+    /// See : https://technical.buildingsmart.org/standards/bcf/<br/>
+    /// and : https://github.com/buildingSMART/BCF-XML/tree/master/Documentation<br/>
     /// BCFfile constructors :<br/>
     /// - BCFfile() : Create an empty BCFfile object<br/>
     /// - BCFfile(filename) : Create a BCFfile object, and read the given file
