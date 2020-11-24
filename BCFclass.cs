@@ -1,7 +1,15 @@
 ﻿
-// Read BCF comments file
-// Emmanuel Maschas - 10-2020
-// Class
+/*! \mainpage 
+<h1>BCFclass</h1>
+Contains the structures and the methods to read a BCF file.<br/><br/>
+<h1>BCF</h1>
+BCF = BIM Collaboration Format<br/>
+See : <br/>
+<see>https://technical.buildingsmart.org/standards/bcf/</see>
+<see>https://github.com/buildingSMART/BCF-XML/tree/master/Documentation</see><br/>
+<hr/>
+By Emmanuel Maschas - 10-2020
+*/
 
 #region "Usings"
 using System;
@@ -14,12 +22,6 @@ using System.IO.Compression;
 using System.Globalization;
 #endregion
 
-// <summary>
-// BCFclass name space :<br/>
-// Contains the structures and the methods to read a BCF file.<br/>
-// BCF : BIM Collaboration Format<br/>
-// See <see>https://technical.buildingsmart.org/standards/bcf/</see>
-// </summary>
 namespace BCFclass {
 
   #region "BCF Structures"
@@ -38,94 +40,95 @@ namespace BCFclass {
   ///  -  <c>Image</c> : Content of the snapshot file (bitmap)
   /// </summary>
   public class Viewpoint {
-    ///<summary>GUID : Globally Unique Identifier</summary>
+    /// <summary>GUID : Globally Unique Identifier</summary>
     public string GUID             {get;set;}
-    ///<summary>Index : Index of the viewpoint</summary>
+    /// <summary>Index : Index of the viewpoint</summary>
     public string Index            {get;set;}
-    ///<summary>Bcfv : view position definition file name</summary>
+    /// <summary>Bcfv : view position definition file name</summary>
     public string Bcfv             {get;set;}
-    ///<summary>Snapshot : snapshot file name</summary>
+    /// <summary>Snapshot : snapshot file name</summary>
     public string Snapshot         {get;set;}
-    ///<summary>CamX, CamY, CamZ : Position of the Camera (in meters)</summary>
+    /// <summary>CamX : Position of the Camera, X component in meters</summary>
     public double CamX             {get;set;}
-    ///<summary>CamX, CamY, CamZ : Position of the Camera (in meters)</summary>
+    /// <summary>CamY : Position of the Camera, Y component in meters</summary>
     public double CamY             {get;set;}
-    ///<summary>CamX, CamY, CamZ : Position of the Camera (in meters)</summary>
+    /// <summary>CamZ : Position of the Camera, Z component in meters</summary>
     public double CamZ             {get;set;}
-    ///<summary>DirX, DirY, DirZ : View direction</summary>
+    /// <summary>DirX : View direction, X component</summary>
     public double DirX             {get;set;}
-    ///<summary>DirX, DirY, DirZ : View direction</summary>
+    /// <summary>DirY : View direction, Y component</summary>
     public double DirY             {get;set;}
-    ///<summary>DirX, DirY, DirZ : View direction</summary>
+    /// <summary>DirZ : View direction, Z component</summary>
     public double DirZ             {get;set;}
-    ///<summary>UpX, UpY, UpZ : Up direction</summary>
+    /// <summary>UpX : Up direction, X component</summary>
     public double UpX              {get;set;}
-    ///<summary>UpX, UpY, UpZ : Up direction</summary>
+    /// <summary>UpY : Up direction, Y component</summary>
     public double UpY              {get;set;}
-    ///<summary>UpX, UpY, UpZ : Up direction</summary>
+    /// <summary>UpZ : Up direction, Z component</summary>
     public double UpZ              {get;set;}
-    ///<summary>Field : Field of view in degress</summary>
+    /// <summary>Field : Field of view in degress</summary>
     public double Field            {get;set;}
-    ///<summary>Components : List of visible components</summary>
+    /// <summary>Components : List of visible components</summary>
     public List<string> Components {get;set;}
-    ///<summary>Image : Content (Bitmap) of the snapshot file </summary>
+    /// <summary>Image : Content (Bitmap) of the snapshot file </summary>
     public Bitmap Image            {get;set;}
   }
 
   /// <summary> Comment Structure </summary>
   public class Comment {
-    ///<summary>Date : </summary>
+    /// <summary>Date : Creation date of the comment</summary>
     public string Date            {get;set;}
-    ///<summary>Author : </summary>
+    /// <summary>Author : Creation author of the comment</summary>
     public string Author          {get;set;}
-    ///<summary>Text : </summary>
+    /// <summary>Text : Text of the comment</summary>
     public string Text            {get;set;}
-    ///<summary>ModifiedDate : </summary>
+    /// <summary>ModifiedDate : Last modification date of the comment</summary>
     public string ModifiedDate    {get;set;}
-    ///<summary>ModifiedAuthor : </summary>
+    /// <summary>ModifiedAuthor : Last modification author of the comment</summary>
     public string ModifiedAuthor  {get;set;}
-    ///<summary>VPGuid : </summary>
+    /// <summary>VPGuid : GUID of the viewpoint associated to the comment (optional)</summary>
     public string VPGuid          {get;set;}
-    ///<summary>Viewpoint : </summary>
+    /// <summary>Viewpoint : Pointer of the viewpoint associated to the comment or <i>null</i></summary>
     public Viewpoint Viewpoint    {get;set;}
   }
 
   /// <summary> Topic Structure </summary>
   public class Topic {
-    ///<summary>ZipFile : </summary>
+    /// <summary>ZipFile : Full name of the *.bcfzip file, source of this Topic</summary>
     public string ZipFile             {get;set;}
-    ///<summary>TopicType : </summary>
+    /// <summary>TopicType : Type of topic, one of : Comment, Issue, Request, Solution</summary>
     public string TopicType           {get;set;}
-    ///<summary>TopicStatus : </summary>
+    /// <summary>TopicStatus : Status of the topic, one of : Open, In Progress, Closed, ReOpened</summary>
     public string TopicStatus         {get;set;}
-    ///<summary>Title : </summary>
+    /// <summary>Title : Title of the Topic</summary>
     public string Title               {get;set;}
-    ///<summary>Priority : </summary>
+    /// <summary>Priority : Priority of the topic</summary>
     public string Priority            {get;set;}
-    ///<summary>Index : </summary>
+    /// <summary>Index : Index of the topic</summary>
     public string Index               {get;set;}
-    ///<summary>CreationDate : </summary>
+    /// <summary>CreationDate : Date of creation of the Topic</summary>
     public string CreationDate        {get;set;}
-    ///<summary>CreationAuthor : </summary>
+    /// <summary>CreationAuthor : Author that created the Topic</summary>
     public string CreationAuthor      {get;set;}
-    ///<summary>ModifiedDate : </summary>
+    /// <summary>ModifiedDate : Last date of modification of the Topic</summary>
     public string ModifiedDate        {get;set;}
-    ///<summary>ModifiedAuthor : </summary>
+    /// <summary>ModifiedAuthor : Last Author that modified the Topic</summary>
     public string ModifiedAuthor      {get;set;}
-    ///<summary>Description : </summary>
+    /// <summary>Description : Decriptio of the Topic</summary>
     public string Description         {get;set;}
-    ///<summary>Comments : </summary>
+    /// <summary>Comments : List of Comments associated to the Topic</summary>
     public List<Comment> Comments     {get;set;}
-    ///<summary>Viewpoints : </summary>
+    /// <summary>Viewpoints : List of Viewpoints associated to the Topic</summary>
     public List<Viewpoint> Viewpoints {get;set;}
   }
 
   #endregion
 
   /// <summary> BCF file class </summary>
-  public partial class BCFfile : UserControl {
+  public class BCFfile {
+  //public partial class BCFfile : UserControl {
 
-    /// <summary> List of BCF Topics loaded in Navisworks </summary>
+    /// <summary> List of BCF Topics loaded in the BCFfile object </summary>
     public List<Topic> TopicsList = new List<Topic>();
 
     #region "BCF Utilities"
@@ -304,18 +307,39 @@ namespace BCFclass {
 
     #endregion
 
-    /// <summary> BCFfile constructor </summary>
-    public BCFfile(string FileName, Boolean Append) {
-      this.ReadBCF(FileName, Append);
-    }
-    /// <summary> BCFfile constructor overload </summary>
+    /// <summary>
+    /// BCFclass :<br/>
+    /// Contains the structures and the methods to read a BCF file.<br/>
+    /// BCF : BIM Collaboration Format<br/>
+    /// See : <see>https://technical.buildingsmart.org/standards/bcf/</see><br/>
+    /// and : <see>https://github.com/buildingSMART/BCF-XML/tree/master/Documentation</see><br/>
+    /// BCFfile constructors :<br/>
+    /// - BCFfile() : Create an empty BCFfile object<br/>
+    /// - BCFfile(filename) : Create a BCFfile object, and read the given file
+    /// </summary>
+    /// <param name="FileName">Name of the BCF file to read</param>
     public BCFfile(string FileName) {
       this.ReadBCF(FileName, false);
     }
-    /// <summary> BCFfile constructor overload </summary>
+
+    #region "Constructors"
+
+    /// <summary>
+    /// BCFclass :<br/>
+    /// Contains the structures and the methods to read a BCF file.<br/>
+    /// BCF : BIM Collaboration Format<br/>
+    /// See : <see>https://technical.buildingsmart.org/standards/bcf/</see><br/>
+    /// and : <see>https://github.com/buildingSMART/BCF-XML/tree/master/Documentation</see><br/>
+    /// BCFfile constructors :<br/>
+    /// - BCFfile() : Create an empty BCFfile object<br/>
+    /// - BCFfile(filename) : Create a BCFfile object, and read the given file
+    /// </summary>
     public BCFfile() {
       // Do nothing...
     }
+
+    #endregion
+
   }
 
 }

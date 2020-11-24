@@ -14,9 +14,9 @@ namespace BCFviewer {
   /// Only one of them shall be defined, the other shall be null
   /// </summary>
   public class BCFTreeNode : TreeNode {
-    ///<summary>Added property : Topic NodeTopic</summary>
+    /// <summary>Added property : Topic NodeTopic</summary>
     public Topic NodeTopic;
-    ///<summary>Added property : Comment NodeComment</summary>
+    /// <summary>Added property : Comment NodeComment</summary>
     public Comment NodeComment;
   }
   
@@ -63,7 +63,7 @@ namespace BCFviewer {
       InitializeComponent();
       String exe = Application.ExecutablePath;
       String pat = Path.GetDirectoryName(exe);
-      this.Icon = new Icon( pat + "\\icons\\BCF.ico");
+      this.Icon = new Icon( pat + "\\icons\\BCFicon.ico");
       this.Padding = new Padding(10, 0, 10, 10);
       // Menu
       MenuStrip ms = new MenuStrip();

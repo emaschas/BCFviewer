@@ -6,8 +6,8 @@
     <Platform>AnyCPU</Platform>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>icons\BCF.ico</ApplicationIcon>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <ApplicationIcon>icons\BCFicon.ico</ApplicationIcon>
+    <!--GenerateDocumentationFile>true</GenerateDocumentationFile-->
   </PropertyGroup>
 
   <ItemGroup>
