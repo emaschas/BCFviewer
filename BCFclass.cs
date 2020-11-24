@@ -3,6 +3,8 @@
 /// The BCFclass class contains the structures and the methods to read a BCF file.<br/><br/>
 /// <h2>BCF</h2>
 /// BCF = BIM Collaboration Format<br/>
+/// BCF files are exported from 3D model review softwares and contain the topics and comments without the model itself.
+///
 /// <h2>References</h2>
 /// Decsription of BCF files and their usage : <br/>
 /// <see>https://technical.buildingsmart.org/standards/bcf/</see>
