@@ -29,98 +29,131 @@ namespace BCFclass {
   #region "BCF Structures"
 
   /// <summary> Viewpoint structure<br/>
-  /// The viewpoint includes :<br/>
-  ///  -  <c>GUID</c> : Globally Unique Identifier<br/>
-  ///  -  <c>Index</c> : Index of the viewpoint<br/>
-  ///  -  <c>Bcfv</c> : view position definition file name<br/>
-  ///  -  <c>Snapshot</c> : snapshot file name<br/>
-  ///  -  <c>CamX</c>, CamY, CamZ : Position of the Camera (in meters)<br/>
-  ///  -  <c>DirX</c>, DirY, DirZ : View direction<br/>
-  ///  -  <c>UpX</c>, UpY, UpZ : Up direction<br/>
-  ///  -  <c>Field</c> : Field of view in degress<br/>
-  ///  -  <c>Components</c> : List of visible components<br/>
-  ///  -  <c>Image</c> : Content of the snapshot file (bitmap)
+  /// The viewpoint includes :
+  /// <list type="table">
+  /// <item><term>GUID</term><description> Globally Unique Identifier</description></item>
+  /// <item><term>Index</term><description> Index of the viewpoint</description></item>
+  /// <item><term>Bcfv</term><description> View position definition file name</description></item>
+  /// <item><term>Snapshot</term><description> Snapshot file name</description></item>
+  /// <item><term>CamX,CamY, CamZ</term><description> Position of the Camera (in meters)</description></item>
+  /// <item><term>DirX,DirY, DirZ</term><description> View direction</description></item>
+  /// <item><term>UpX,UpY, UpZ</term><description> Up direction</description></item>
+  /// <item><term>Field</term><description> Field of view in degress</description></item>
+  /// <item><term>Components</term><description> List of visible components</description></item>
+  /// <item><term>Image</term><description> Content of the snapshot file (Bitmap)</description></item>
+  /// </list>
   /// </summary>
   public class Viewpoint {
-    /// <summary>GUID : Globally Unique Identifier</summary>
+    /// <summary>Globally Unique Identifier</summary>
     public string GUID             {get;set;}
-    /// <summary>Index : Index of the viewpoint</summary>
+    /// <summary>Index of the viewpoint</summary>
     public string Index            {get;set;}
-    /// <summary>Bcfv : view position definition file name</summary>
+    /// <summary>View position definition file name</summary>
     public string Bcfv             {get;set;}
-    /// <summary>Snapshot : snapshot file name</summary>
+    /// <summary>snapshot file name</summary>
     public string Snapshot         {get;set;}
-    /// <summary>CamX : Position of the Camera, X component in meters</summary>
+    /// <summary>Position of the Camera, X component in meters</summary>
     public double CamX             {get;set;}
-    /// <summary>CamY : Position of the Camera, Y component in meters</summary>
+    /// <summary>Position of the Camera, Y component in meters</summary>
     public double CamY             {get;set;}
-    /// <summary>CamZ : Position of the Camera, Z component in meters</summary>
+    /// <summary>Position of the Camera, Z component in meters</summary>
     public double CamZ             {get;set;}
-    /// <summary>DirX : View direction, X component</summary>
+    /// <summary>View direction, X component</summary>
     public double DirX             {get;set;}
-    /// <summary>DirY : View direction, Y component</summary>
+    /// <summary>View direction, Y component</summary>
     public double DirY             {get;set;}
-    /// <summary>DirZ : View direction, Z component</summary>
+    /// <summary>View direction, Z component</summary>
     public double DirZ             {get;set;}
-    /// <summary>UpX : Up direction, X component</summary>
+    /// <summary>Up direction, X component</summary>
     public double UpX              {get;set;}
     /// <summary>UpY : Up direction, Y component</summary>
     public double UpY              {get;set;}
-    /// <summary>UpZ : Up direction, Z component</summary>
+    /// <summary>Up direction, Z component</summary>
     public double UpZ              {get;set;}
-    /// <summary>Field : Field of view in degress</summary>
+    /// <summary>Field of view in degress</summary>
     public double Field            {get;set;}
-    /// <summary>Components : List of visible components</summary>
+    /// <summary>List of visible components</summary>
     public List<string> Components {get;set;}
-    /// <summary>Image : Content (Bitmap) of the snapshot file </summary>
+    /// <summary>Content (Bitmap) of the snapshot file </summary>
     public Bitmap Image            {get;set;}
   }
 
-  /// <summary> Comment Structure </summary>
+  /// <summary> Comment Structure<br/>
+  /// The Comment structure includes :
+  /// <list type="table">
+  /// <item><term>Date</term><description>Creation date of the comment</description></item>
+  /// <item><term>Author</term><description>Creation author of the comment</description></item>
+  /// <item><term>Text</term><description>Text of the comment</description></item>
+  /// <item><term>ModifiedDate</term><description>Last modification date of the comment</description></item>
+  /// <item><term>ModifiedAuthor</term><description>Last modification author of the comment</description></item>
+  /// <item><term>VPGuid</term><description>GUID of the viewpoint associated to the comment (optional)</description></item>
+  /// <item><term>Viewpoint</term><description>Viewpoint associated to the comment or <c>null</c></description></item>
+  /// </list>
+  /// </summary>
   public class Comment {
-    /// <summary>Date : Creation date of the comment</summary>
+    /// <summary>Creation date of the comment</summary>
     public string Date            {get;set;}
-    /// <summary>Author : Creation author of the comment</summary>
+    /// <summary>Creation author of the comment</summary>
     public string Author          {get;set;}
-    /// <summary>Text : Text of the comment</summary>
+    /// <summary>Text of the comment</summary>
     public string Text            {get;set;}
-    /// <summary>ModifiedDate : Last modification date of the comment</summary>
+    /// <summary>Last modification date of the comment</summary>
     public string ModifiedDate    {get;set;}
-    /// <summary>ModifiedAuthor : Last modification author of the comment</summary>
+    /// <summary>Last modification author of the comment</summary>
     public string ModifiedAuthor  {get;set;}
-    /// <summary>VPGuid : GUID of the viewpoint associated to the comment (optional)</summary>
+    /// <summary>GUID of the viewpoint associated to the comment (optional)</summary>
     public string VPGuid          {get;set;}
-    /// <summary>Viewpoint : Pointer of the viewpoint associated to the comment or <i>null</i></summary>
+    /// <summary>Viewpoint associated to the comment or <i>null</i></summary>
     public Viewpoint Viewpoint    {get;set;}
   }
 
-  /// <summary> Topic Structure </summary>
+  /// <summary> Topic Structure 
+  /// <list type="table">
+  /// <item><term>ZipFile</term><description>Full name of the *.bcfzip file, source of this Topic</description></item>
+  /// <item><term>TopicType</term><description>Type of topic<value><list type="bullet"><item>Comment</item><item>Issue</item><item>Request</item><item>Solution</item></list></value></description></item>
+  /// <item><term>TopicStatus</term><description>Status of the topic<value><list type="bullet"><item>Open</item><item>In Progress</item><item>Closed</item><item>ReOpened</item></list></value></description></item>
+  /// <item><term>Title</term><description>Title of the Topic</description></item>
+  /// <item><term>Priority</term><description>Priority of the topic</description></item>
+  /// <item><term>Index</term><description>Index of the topic</description></item>
+  /// <item><term>CreationDate</term><description>Date of creation of the Topic</description></item>
+  /// <item><term>CreationAuthor</term><description>Author that created the Topic</description></item>
+  /// <item><term>ModifiedDate</term><description>Last date of modification of the Topic</description></item>
+  /// <item><term>ModifiedAuthor</term><description>Last Author that modified the Topic</description></item>
+  /// <item><term>Description</term><description>Decriptio of the Topic</description></item>
+  /// <item><term>Comments</term><description>List of Comments associated to the Topic</description></item>
+  /// <item><term>Viewpoints</term><description>List of Viewpoints associated to the Topic</description></item>
+  /// </list>
+  /// </summary>
+  /// <remark>Used in BCFfile </remark>
   public class Topic {
-    /// <summary>ZipFile : Full name of the *.bcfzip file, source of this Topic</summary>
+    /// <summary>ZipFile : Full name of the *.bcfzip file, source of this Topic<br/>
+    /// Since multiple BCF files may be appendedn this information is recorder for each individual Topic</summary>
     public string ZipFile             {get;set;}
-    /// <summary>TopicType : Type of topic, one of : Comment, Issue, Request, Solution</summary>
+    /// <summary>Type of topic</summary>
+    /// <value><list type="bullet"><item>Comment</item><item>Issue</item><item>Request</item><item>Solution</item></list></value>
     public string TopicType           {get;set;}
-    /// <summary>TopicStatus : Status of the topic, one of : Open, In Progress, Closed, ReOpened</summary>
+    /// <summary>Status of the topic</summary>
+    /// <value><list type="bullet"><item>Open</item><item>In Progress</item><item>Closed</item><item>ReOpened</item></list></value>
     public string TopicStatus         {get;set;}
-    /// <summary>Title : Title of the Topic</summary>
+    /// <summary>Title of the Topic</summary>
     public string Title               {get;set;}
-    /// <summary>Priority : Priority of the topic</summary>
+    /// <summary>Priority of the topic</summary>
     public string Priority            {get;set;}
-    /// <summary>Index : Index of the topic</summary>
+    /// <summary>Index of the topic</summary>
     public string Index               {get;set;}
-    /// <summary>CreationDate : Date of creation of the Topic</summary>
+    /// <summary>Date of creation of the Topic</summary>
     public string CreationDate        {get;set;}
-    /// <summary>CreationAuthor : Author that created the Topic</summary>
+    /// <summary>Author that created the Topic</summary>
     public string CreationAuthor      {get;set;}
-    /// <summary>ModifiedDate : Last date of modification of the Topic</summary>
+    /// <summary>Last date of modification of the Topic</summary>
     public string ModifiedDate        {get;set;}
-    /// <summary>ModifiedAuthor : Last Author that modified the Topic</summary>
+    /// <summary>Last Author that modified the Topic</summary>
     public string ModifiedAuthor      {get;set;}
-    /// <summary>Description : Decriptio of the Topic</summary>
+    /// <summary>Decriptio of the Topic</summary>
     public string Description         {get;set;}
-    /// <summary>Comments : List of Comments associated to the Topic</summary>
+    /// <summary>List of Comments associated to the Topic</summary>
     public List<Comment> Comments     {get;set;}
-    /// <summary>Viewpoints : List of Viewpoints associated to the Topic</summary>
+    /// <summary>List of Viewpoints associated to the Topic</summary>
     public List<Viewpoint> Viewpoints {get;set;}
   }
 
@@ -135,32 +168,33 @@ namespace BCFclass {
 
     #region "BCF Utilities"
 
-    /// <summary> Utility to read an xml field </summary>
-    /// <returns> The value of the XML element or "-" if unset </returns>
-    private string ReadXML(XElement obj, string field) {
-      if(obj.Element(field) != null)
-        return obj.Element(field).Value;
+    /// <summary> Utility to read the value of the XML element <paramref name="field"/> of the XML <paramref name="element"/></summary>
+    /// <returns> The value of the XML element <paramref name="field"/> or "-" if unset </returns>
+    private string ReadXML(XElement element, string field) {
+      if(element.Element(field) != null)
+        return element.Element(field).Value;
       else
         return "-";
     }
     
-    /// <summary> Utility to read an xml attribute </summary>
-    /// <returns> The attribute value or "-" if unset </returns>
-    private string ReadATT(XElement obj, string attribute) {
+    /// <summary> Utility to read the <paramref name="attribute"/> of the XML <paramref name="element"/> </summary>
+    /// <returns> The <paramref name="attribute"/> value or "-" if unset </returns>
+    private string ReadATT(XElement element, string attribute) {
       string res = "-";
-      foreach(XAttribute att in obj.Attributes(attribute)) res = att.Value;
+      foreach(XAttribute att in element.Attributes(attribute)) res = att.Value;
       return res;
     }
     
-    /// <summary> Format an ISO date in readable string </summary>
-    /// <param name="isodate">Date in ISO format. Ex : 2014-10-16T14:35:29+00:00</param>
-    private string formatDate(string isodate) {
+    /// <summary> Format the supplied <paramref name="ISOdate"/> ISO date in a readable string </summary>
+    /// <param name="ISOdate">Date in ISO format. Ex : 2014-10-16T14:35:29+00:00</param>
+    /// <returns>A string reprsenting the supplied <paramref name="ISOdate"/> ISO date</returns>
+    private string formatDate(string ISOdate) {
       string res;
       try { 
-        DateTime dat = DateTime.Parse(isodate);
+        DateTime dat = DateTime.Parse(ISOdate);
         res = dat.ToString("d", CultureInfo.CreateSpecificCulture("fr-FR")); 
       }
-      catch { res = isodate; }
+      catch { res = ISOdate; }
       return res;
     }
 
@@ -168,10 +202,11 @@ namespace BCFclass {
 
     #region "Read Routines"
 
-    /// <summary> Read the Camera settings for the selected viewpoint.bcfv file </summary>
+    /// <summary> Read the Camera settings for the selected <paramref name="viewpoint"/>.bcfv file </summary>
     /// <param name="bcfzip">ZipArchive in which the bcfv file is located</param>
     /// <param name="filename">Name of bcfv viewpoint file within the ZIP archive</param>
     /// <param name="viewpoint">Viewpoint in which the camera settings will be stored</param>
+    /// <returns>Nothing</returns>
     private void readBCFV(ZipArchive bcfzip, string filename, Viewpoint viewpoint) {
       ZipArchiveEntry bcfvzip = bcfzip.GetEntry(filename);
       // Default values
@@ -211,7 +246,8 @@ namespace BCFclass {
     
     /// <summary> Load or Append a BCF File </summary> 
     /// <param name="FileName">Full path of the file to be loadded or appended </param>
-    /// <param name="Append">Load if false or Append if true </param>
+    /// <param name="Append">Load if <c>false</c> or Append if <c>true</c> </param>
+    /// <returns>Nothing</returns>
     public void ReadBCF(String FileName, Boolean Append) {
       if(!Append) TopicsList.Clear();
       using(ZipArchive bcfzip = ZipFile.OpenRead(FileName)) {
@@ -309,6 +345,8 @@ namespace BCFclass {
 
     #endregion
 
+    #region "Constructors"
+
     /// <summary>
     /// BCFclass :<br/>
     /// Contains the structures and the methods to read a BCF file.<br/>
@@ -324,8 +362,6 @@ namespace BCFclass {
       this.ReadBCF(FileName, false);
     }
 
-    #region "Constructors"
-
     /// <summary>
     /// BCFclass :<br/>
     /// Contains the structures and the methods to read a BCF file.<br/>
@@ -336,9 +372,7 @@ namespace BCFclass {
     /// - BCFfile() : Create an empty BCFfile object<br/>
     /// - BCFfile(filename) : Create a BCFfile object, and read the given file
     /// </summary>
-    public BCFfile() {
-      // Do nothing...
-    }
+    public BCFfile() {}
 
     #endregion
 

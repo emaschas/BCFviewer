@@ -74,15 +74,77 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">BCF file class  <a href="class_b_c_fclass_1_1_b_c_ffile.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_c_fclass_1_1_comment.html">Comment</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_b_c_fclass_1_1_comment.html" title="Comment Structure ">Comment</a> Structure  <a href="class_b_c_fclass_1_1_comment.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_b_c_fclass_1_1_comment.html" title="Comment Structure  The Comment structure includes : DateCreation date of the comment AuthorCreation a...">Comment</a> Structure<br />
+ The <a class="el" href="class_b_c_fclass_1_1_comment.html" title="Comment Structure  The Comment structure includes : DateCreation date of the comment AuthorCreation a...">Comment</a> structure includes : </p><table class="doxtable">
+<tr>
+<td>Date</td><td>Creation date of the comment </td></tr>
+<tr>
+<td>Author</td><td>Creation author of the comment </td></tr>
+<tr>
+<td>Text</td><td>Text of the comment </td></tr>
+<tr>
+<td>ModifiedDate</td><td>Last modification date of the comment </td></tr>
+<tr>
+<td>ModifiedAuthor</td><td>Last modification author of the comment </td></tr>
+<tr>
+<td>VPGuid</td><td>GUID of the viewpoint associated to the comment (optional) </td></tr>
+<tr>
+<td><a class="el" href="class_b_c_fclass_1_1_viewpoint.html" title="Viewpoint structure  The viewpoint includes : GUIDGlobally Unique Identifier IndexIndex of the viewpo...">Viewpoint</a></td><td><a class="el" href="class_b_c_fclass_1_1_viewpoint.html" title="Viewpoint structure  The viewpoint includes : GUIDGlobally Unique Identifier IndexIndex of the viewpo...">Viewpoint</a> associated to the comment or <code>null</code> </td></tr>
+</table>
+ <a href="class_b_c_fclass_1_1_comment.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_c_fclass_1_1_topic.html">Topic</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_b_c_fclass_1_1_topic.html" title="Topic Structure ">Topic</a> Structure  <a href="class_b_c_fclass_1_1_topic.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_b_c_fclass_1_1_topic.html" title="Topic Structure ZipFileFull name of the *.bcfzip file, source of this Topic TopicTypeType of topic&lt;va...">Topic</a> Structure </p><table class="doxtable">
+<tr>
+<td>ZipFile</td><td>Full name of the *.bcfzip file, source of this <a class="el" href="class_b_c_fclass_1_1_topic.html" title="Topic Structure ZipFileFull name of the *.bcfzip file, source of this Topic TopicTypeType of topic&lt;va...">Topic</a> </td></tr>
+<tr>
+<td>TopicType</td><td>Type of topic&lt;value&gt;<ul>
+<li>
+<p class="startli"><a class="el" href="class_b_c_fclass_1_1_comment.html" title="Comment Structure  The Comment structure includes : DateCreation date of the comment AuthorCreation a...">Comment</a></p>
+<p>Issue</p>
+<p>Request</p>
+<p class="endli">Solution</p>
+</li>
+</ul>
+</td></tr>
+</table>
+TopicStatusStatus of the topic&lt;value&gt;</p><ul>
+<li>
+Open</li>
+<li>
+In Progress</li>
+<li>
+Closed</li>
+<li>
+ReOpened</li>
+</ul>
+TitleTitle of the <a class="el" href="class_b_c_fclass_1_1_topic.html" title="Topic Structure ZipFileFull name of the *.bcfzip file, source of this Topic TopicTypeType of topic&lt;va...">Topic</a> PriorityPriority of the topic IndexIndex of the topic CreationDateDate of creation of the <a class="el" href="class_b_c_fclass_1_1_topic.html" title="Topic Structure ZipFileFull name of the *.bcfzip file, source of this Topic TopicTypeType of topic&lt;va...">Topic</a> CreationAuthorAuthor that created the <a class="el" href="class_b_c_fclass_1_1_topic.html" title="Topic Structure ZipFileFull name of the *.bcfzip file, source of this Topic TopicTypeType of topic&lt;va...">Topic</a> ModifiedDateLast date of modification of the <a class="el" href="class_b_c_fclass_1_1_topic.html" title="Topic Structure ZipFileFull name of the *.bcfzip file, source of this Topic TopicTypeType of topic&lt;va...">Topic</a> ModifiedAuthorLast Author that modified the <a class="el" href="class_b_c_fclass_1_1_topic.html" title="Topic Structure ZipFileFull name of the *.bcfzip file, source of this Topic TopicTypeType of topic&lt;va...">Topic</a> DescriptionDecriptio of the <a class="el" href="class_b_c_fclass_1_1_topic.html" title="Topic Structure ZipFileFull name of the *.bcfzip file, source of this Topic TopicTypeType of topic&lt;va...">Topic</a> CommentsList of Comments associated to the <a class="el" href="class_b_c_fclass_1_1_topic.html" title="Topic Structure ZipFileFull name of the *.bcfzip file, source of this Topic TopicTypeType of topic&lt;va...">Topic</a> ViewpointsList of Viewpoints associated to the <a class="el" href="class_b_c_fclass_1_1_topic.html" title="Topic Structure ZipFileFull name of the *.bcfzip file, source of this Topic TopicTypeType of topic&lt;va...">Topic</a>  <a href="class_b_c_fclass_1_1_topic.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_c_fclass_1_1_viewpoint.html">Viewpoint</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_b_c_fclass_1_1_viewpoint.html" title="Viewpoint structure  The viewpoint includes :  ">Viewpoint</a> structure<br />
- The viewpoint includes :<br />
-  <a href="class_b_c_fclass_1_1_viewpoint.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_b_c_fclass_1_1_viewpoint.html" title="Viewpoint structure  The viewpoint includes : GUIDGlobally Unique Identifier IndexIndex of the viewpo...">Viewpoint</a> structure<br />
+ The viewpoint includes : </p><table class="doxtable">
+<tr>
+<td>GUID</td><td>Globally Unique Identifier </td></tr>
+<tr>
+<td>Index</td><td>Index of the viewpoint </td></tr>
+<tr>
+<td>Bcfv</td><td>View position definition file name </td></tr>
+<tr>
+<td>Snapshot</td><td>Snapshot file name </td></tr>
+<tr>
+<td>CamX,CamY, CamZ</td><td>Position of the Camera (in meters) </td></tr>
+<tr>
+<td>DirX,DirY, DirZ</td><td>View direction </td></tr>
+<tr>
+<td>UpX,UpY, UpZ</td><td>Up direction </td></tr>
+<tr>
+<td>Field</td><td>Field of view in degress </td></tr>
+<tr>
+<td>Components</td><td>List of visible components </td></tr>
+<tr>
+<td>Image</td><td>Content of the snapshot file (Bitmap) </td></tr>
+</table>
+ <a href="class_b_c_fclass_1_1_viewpoint.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
