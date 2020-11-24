@@ -1,15 +1,15 @@
-﻿
-/*! \mainpage 
-<h1>BCFclass</h1>
-Contains the structures and the methods to read a BCF file.<br/><br/>
-<h1>BCF</h1>
-BCF = BIM Collaboration Format<br/>
-See : <br/>
-<see>https://technical.buildingsmart.org/standards/bcf/</see>
-<see>https://github.com/buildingSMART/BCF-XML/tree/master/Documentation</see><br/>
-<hr/>
-By Emmanuel Maschas - 10-2020
-*/
+﻿/// \mainpage 
+/// <h1>BCFclass</h1>
+/// The BCFclass class contains the structures and the methods to read a BCF file.<br/><br/>
+/// <h2>BCF</h2>
+/// BCF = BIM Collaboration Format<br/>
+/// <h2>References</h2>
+/// Decsription of BCF files and their usage : <br/>
+/// <see>https://technical.buildingsmart.org/standards/bcf/</see>
+/// The BCF file schema is detailed in :<br/>
+/// <see>https://github.com/buildingSMART/BCF-XML/tree/master/Documentation</see><br/>
+/// <hr/>
+/// By Emmanuel Maschas - 10-2020
 
 #region "Usings"
 using System;
