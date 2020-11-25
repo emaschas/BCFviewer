@@ -23,7 +23,6 @@
   <td id="projectlogo"><img alt="Logo" src="BCF.ico"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BCFclass
-   &#160;<span id="projectnumber">1</span>
    </div>
    <div id="projectbrief">File reader for BIM Collaboration Format (BCF) files</div>
   </td>
@@ -73,24 +72,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="class_b_c_fclass_1_1_comment.html" title="Comment Structure  The Comment structure includes : DateCreation date of the comment AuthorCreation a...">Comment</a> Structure<br />
- The <a class="el" href="class_b_c_fclass_1_1_comment.html" title="Comment Structure  The Comment structure includes : DateCreation date of the comment AuthorCreation a...">Comment</a> structure includes : </p><table class="doxtable">
-<tr>
-<td>Date</td><td>Creation date of the comment </td></tr>
-<tr>
-<td>Author</td><td>Creation author of the comment </td></tr>
-<tr>
-<td>Text</td><td>Text of the comment </td></tr>
-<tr>
-<td>ModifiedDate</td><td>Last modification date of the comment </td></tr>
-<tr>
-<td>ModifiedAuthor</td><td>Last modification author of the comment </td></tr>
-<tr>
-<td>VPGuid</td><td>GUID of the viewpoint associated to the comment (optional) </td></tr>
-<tr>
-<td><a class="el" href="class_b_c_fclass_1_1_viewpoint.html" title="Viewpoint structure  The viewpoint includes : GUIDGlobally Unique Identifier IndexIndex of the viewpo...">Viewpoint</a></td><td><a class="el" href="class_b_c_fclass_1_1_viewpoint.html" title="Viewpoint structure  The viewpoint includes : GUIDGlobally Unique Identifier IndexIndex of the viewpo...">Viewpoint</a> associated to the comment or <code>null</code> </td></tr>
-</table>
- 
+<p><a class="el" href="class_b_c_fclass_1_1_comment.html" title="Comment of a BCF file (referenced by a Topic) ">Comment</a> of a BCF file (referenced by a <a class="el" href="class_b_c_fclass_1_1_topic.html" title="Topic of a BCF file ">Topic</a>)  
  <a href="class_b_c_fclass_1_1_comment.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
@@ -114,12 +96,13 @@ Properties</h2></td></tr>
 <tr class="memdesc:a87e0d2f0d7757089734c445ccea497e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">GUID of the viewpoint associated to the comment (optional) <a href="#a87e0d2f0d7757089734c445ccea497e6">More...</a><br /></td></tr>
 <tr class="separator:a87e0d2f0d7757089734c445ccea497e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07340bf34ce6c4a82ae4cb8da32c132b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_b_c_fclass_1_1_viewpoint.html">Viewpoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_c_fclass_1_1_comment.html#a07340bf34ce6c4a82ae4cb8da32c132b">Viewpoint</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a07340bf34ce6c4a82ae4cb8da32c132b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_b_c_fclass_1_1_viewpoint.html" title="Viewpoint structure  The viewpoint includes : GUIDGlobally Unique Identifier IndexIndex of the viewpo...">Viewpoint</a> associated to the comment or <em>null</em> <a href="#a07340bf34ce6c4a82ae4cb8da32c132b">More...</a><br /></td></tr>
+<tr class="memdesc:a07340bf34ce6c4a82ae4cb8da32c132b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_b_c_fclass_1_1_viewpoint.html" title="Viewpoint of a BCF file (referenced by a Topic or by a Comment)">Viewpoint</a> associated to the comment or <em>null</em> <a href="#a07340bf34ce6c4a82ae4cb8da32c132b">More...</a><br /></td></tr>
 <tr class="separator:a07340bf34ce6c4a82ae4cb8da32c132b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="class_b_c_fclass_1_1_comment.html" title="Comment Structure  The Comment structure includes : DateCreation date of the comment AuthorCreation a...">Comment</a> Structure<br />
- The <a class="el" href="class_b_c_fclass_1_1_comment.html" title="Comment Structure  The Comment structure includes : DateCreation date of the comment AuthorCreation a...">Comment</a> structure includes : </p><table class="doxtable">
+<div class="textblock"><p><a class="el" href="class_b_c_fclass_1_1_comment.html" title="Comment of a BCF file (referenced by a Topic) ">Comment</a> of a BCF file (referenced by a <a class="el" href="class_b_c_fclass_1_1_topic.html" title="Topic of a BCF file ">Topic</a>) </p>
+<p>A <a class="el" href="class_b_c_fclass_1_1_topic.html" title="Topic of a BCF file ">Topic</a> may contain multiple <a class="el" href="class_b_c_fclass_1_1_comment.html">Comments</a>, reflecting the discussion on its subject.<br />
+ The <a class="el" href="class_b_c_fclass_1_1_comment.html" title="Comment of a BCF file (referenced by a Topic) ">Comment</a> includes the following properties : </p><table class="doxtable">
 <tr>
 <td>Date</td><td>Creation date of the comment </td></tr>
 <tr>
@@ -133,7 +116,7 @@ Properties</h2></td></tr>
 <tr>
 <td>VPGuid</td><td>GUID of the viewpoint associated to the comment (optional) </td></tr>
 <tr>
-<td><a class="el" href="class_b_c_fclass_1_1_viewpoint.html" title="Viewpoint structure  The viewpoint includes : GUIDGlobally Unique Identifier IndexIndex of the viewpo...">Viewpoint</a></td><td><a class="el" href="class_b_c_fclass_1_1_viewpoint.html" title="Viewpoint structure  The viewpoint includes : GUIDGlobally Unique Identifier IndexIndex of the viewpo...">Viewpoint</a> associated to the comment or <code>null</code> </td></tr>
+<td><a class="el" href="class_b_c_fclass_1_1_viewpoint.html" title="Viewpoint of a BCF file (referenced by a Topic or by a Comment)">Viewpoint</a></td><td><a class="el" href="class_b_c_fclass_1_1_viewpoint.html" title="Viewpoint of a BCF file (referenced by a Topic or by a Comment)">Viewpoint</a> associated to the comment or <code>null</code> </td></tr>
 </table>
 </div><h2 class="groupheader">Property Documentation</h2>
 <a id="abffaf14c4d35c0f4a3db378546bc6a63"></a>
@@ -276,7 +259,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="class_b_c_fclass_1_1_viewpoint.html" title="Viewpoint structure  The viewpoint includes : GUIDGlobally Unique Identifier IndexIndex of the viewpo...">Viewpoint</a> associated to the comment or <em>null</em></p>
+<p><a class="el" href="class_b_c_fclass_1_1_viewpoint.html" title="Viewpoint of a BCF file (referenced by a Topic or by a Comment)">Viewpoint</a> associated to the comment or <em>null</em></p>
 
 </div>
 </div>
