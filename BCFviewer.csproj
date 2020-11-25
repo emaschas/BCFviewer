@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
+    <Title>BCFviewer</Title>
+    <Version>1.1.0</Version>
     <OutputType>WinExe</OutputType>
-    <Configuration>Release</Configuration>
+    <Configuration>Debug</Configuration>
     <Platform>AnyCPU</Platform>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
@@ -11,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="icons\BCF.ico">
+    <None Include="icons\BCFicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

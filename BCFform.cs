@@ -271,7 +271,7 @@ namespace BCFviewer {
     /// <param name="sender">Not used</param>
     /// <param name="args">Not used</param>
     private void About(Object sender, EventArgs args) {
-      MessageBox.Show("BCF File Viewer by Emmanuel Maschas - Nov. 2020", "BCF File Viewer");
+      MessageBox.Show("BCF File Viewer Version 1.1.0\n\nBy Emmanuel Maschas\nNovember 2020", "BCF File Viewer");
     }
 
     /// <summary> Move the vertical split to match the image ratio (Width / Height) </summary>

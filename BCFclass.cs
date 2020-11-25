@@ -2,16 +2,16 @@
 /// <h1>BCFclass</h1>
 /// The BCFclass class contains the structures and the methods to read a BCF file.<br/><br/>
 /// <h2>BCF</h2>
-/// BCF = BIM Collaboration Format<br/>
-/// BCF files are exported from 3D model review softwares and contain the topics and comments without the model itself.
-///
+/// BIM Collaboration Format (BCF) allows different BIM applications to communicate model-based issues with each other by leveraging IFC models that have been previously shared among project collaborators.<br/>
+/// More specifically, BCF works by transferring XML formatted data, which is contextualized information about an issue or problem directly referencing a view, captured via PNG and IFC coordinates, and elements of a BIM, as referenced via their IFC GUIDs, from one application to another.<br/>
+/// BCF files contain the issues or problems (deisgnated as topics" but not the BIM model itself.<br/>
 /// <h2>References</h2>
 /// Decsription of BCF files and their usage : <br/>
 /// https://technical.buildingsmart.org/standards/bcf/<br/>
 /// The BCF file schema is detailed in :<br/>
 /// https://github.com/buildingSMART/BCF-XML/tree/master/Documentation<br/>
 /// <hr>
-/// By Emmanuel Maschas - 10-2020
+/// By Emmanuel Maschas - 25-11-2020
 
 #region "Usings"
 using System;
@@ -32,16 +32,16 @@ namespace BCFclass {
   /// The Viewpoint defines the position of the camera and includes also a snapshot of the view as it was when the Topic or the Comment was created.<br/>
   /// The Viewpoint includes the following properties :
   /// <list type="table">
-  /// <item><term>GUID</term><description> Globally Unique Identifier</description></item>
-  /// <item><term>Index</term><description> Index of the viewpoint</description></item>
-  /// <item><term>Bcfv</term><description> Visualization information file name</description></item>
-  /// <item><term>Snapshot</term><description> Snapshot file name</description></item>
-  /// <item><term>CamX,CamY, CamZ</term><description> Camera location (in meters)</description></item>
-  /// <item><term>DirX,DirY, DirZ</term><description> Camera direction</description></item>
-  /// <item><term>UpX,UpY, UpZ</term><description> Camera Up vector</description></item>
-  /// <item><term>Field</term><description> Field of view in degress</description></item>
-  /// <item><term>Components</term><description> List of visible components</description></item>
-  /// <item><term>Image</term><description> Content of the snapshot file (Bitmap)</description></item>
+  /// <item><term><see cref="GUID"/></term><description> Globally Unique Identifier</description></item>
+  /// <item><term><see cref="Index"/></term><description> Index of the viewpoint</description></item>
+  /// <item><term><see cref="Bcfv"/></term><description> Visualization information file name</description></item>
+  /// <item><term><see cref="Snapshot"/></term><description> Snapshot file name</description></item>
+  /// <item><term><see cref="CamX"/>, <see cref="CamY"/>, <see cref="CamZ"/></term><description> Camera location (in meters)</description></item>
+  /// <item><term><see cref="DirX"/>, <see cref="DirY"/>, <see cref="DirZ"/></term><description> Camera direction</description></item>
+  /// <item><term><see cref="UpX"/>, <see cref="UpY"/>, <see cref="UpZ"/></term><description> Camera Up vector</description></item>
+  /// <item><term><see cref="Field"/></term><description> Field of view in degress</description></item>
+  /// <item><term><see cref="Components"/></term><description> List of visible components</description></item>
+  /// <item><term><see cref="Image"/></term><description> Content of the snapshot file (Bitmap)</description></item>
   /// </list>
   public class Viewpoint {
     /// <summary>Globally Unique Identifier</summary>
@@ -82,13 +82,13 @@ namespace BCFclass {
   /// A Topic may contain multiple <see cref="Comment">Comments</see>, reflecting the discussion on its subject.<br/>
   /// The Comment includes the following properties :
   /// <list type="table">
-  /// <item><term>Date</term><description>Creation date of the comment</description></item>
-  /// <item><term>Author</term><description>Creation author of the comment</description></item>
-  /// <item><term>Text</term><description>Text of the comment</description></item>
-  /// <item><term>ModifiedDate</term><description>Last modification date of the comment</description></item>
-  /// <item><term>ModifiedAuthor</term><description>Last modification author of the comment</description></item>
-  /// <item><term>VPGuid</term><description>GUID of the viewpoint associated to the comment (optional)</description></item>
-  /// <item><term>Viewpoint</term><description>Viewpoint associated to the comment or <c>null</c></description></item>
+  /// <item><term><see cref="Date"/></term><description>Creation date of the comment</description></item>
+  /// <item><term><see cref="Author"/></term><description>Creation author of the comment</description></item>
+  /// <item><term><see cref="Text"/></term><description>Text of the comment</description></item>
+  /// <item><term><see cref="ModifiedDate"/></term><description>Last modification date of the comment</description></item>
+  /// <item><term><see cref="ModifiedAuthor"/></term><description>Last modification author of the comment</description></item>
+  /// <item><term><see cref="VPGuid"/></term><description>GUID of the viewpoint associated to the comment (optional)</description></item>
+  /// <item><term><see cref="Viewpoint"/></term><description>Viewpoint associated to the comment or <c>null</c></description></item>
   /// </list>
   public class Comment {
     /// <summary>Creation date of the comment</summary>
@@ -111,19 +111,19 @@ namespace BCFclass {
   /// They are used to store the properties, the list of <see cref="Comment">Comments</see> and the list of <see cref="Viewpoint">Viewpoints</see>.<br/>
   /// The Topic includes the following properties :
   /// <list type="table">
-  /// <item><term>ZipFile</term><description>Full name of the *.bcfzip file, source of this Topic</description></item>
-  /// <item><term>TopicType</term><description>Type of Topic</description></item>
-  /// <item><term>TopicStatus</term><description>Status of the Topic</description></item>
-  /// <item><term>Title</term><description>Title of the Topic</description></item>
-  /// <item><term>Priority</term><description>Priority of the Topic</description></item>
-  /// <item><term>Index</term><description>Index of the Topic</description></item>
-  /// <item><term>CreationDate</term><description>Date of creation of the Topic</description></item>
-  /// <item><term>CreationAuthor</term><description>Author that created the Topic</description></item>
-  /// <item><term>ModifiedDate</term><description>Last date of modification of the Topic</description></item>
-  /// <item><term>ModifiedAuthor</term><description>Last Author that modified the Topic</description></item>
-  /// <item><term>Description</term><description>Decription of the Topic</description></item>
-  /// <item><term>Comments</term><description>List of <see cref="Comment">Comments</see> associated to the Topic</description></item>
-  /// <item><term>Viewpoints</term><description>List of <see cref="Viewpoint">Viewpoints</see> associated to the Topic</description></item>
+  /// <item><term><see cref="ZipFile"/></term><description>Full name of the *.bcfzip file, source of this Topic</description></item>
+  /// <item><term><see cref="TopicType"/></term><description>Type of Topic</description></item>
+  /// <item><term><see cref="TopicStatus"/></term><description>Status of the Topic</description></item>
+  /// <item><term><see cref="Title"/></term><description>Title of the Topic</description></item>
+  /// <item><term><see cref="Priority"/></term><description>Priority of the Topic</description></item>
+  /// <item><term><see cref="Index"/></term><description>Index of the Topic</description></item>
+  /// <item><term><see cref="CreationDate"/></term><description>Date of creation of the Topic</description></item>
+  /// <item><term><see cref="CreationAuthor"/></term><description>Author that created the Topic</description></item>
+  /// <item><term><see cref="ModifiedDate"/></term><description>Last date of modification of the Topic</description></item>
+  /// <item><term><see cref="ModifiedAuthor"/></term><description>Last Author that modified the Topic</description></item>
+  /// <item><term><see cref="Description"/></term><description>Decription of the Topic</description></item>
+  /// <item><term><see cref="Comments"/></term><description>List of <see cref="Comment">Comments</see> associated to the Topic</description></item>
+  /// <item><term><see cref="Viewpoints"/></term><description>List of <see cref="Viewpoint">Viewpoints</see> associated to the Topic</description></item>
   /// </list>
   public class Topic {
     /// <summary>ZipFile : Full name of the *.bcfzip file, source of this Topic<br/>
@@ -159,7 +159,7 @@ namespace BCFclass {
 
   #endregion
 
-  /// <summary> Content of one or multiple BCF files </summary>
+  /// <summary> Content of one or multiple BCF files. Contains a list of <see cref="Topic">Topics</see> in the property <see cref="TopicsList"/></summary>
   /// BCF : BIM Collaboration Format<br/>
   /// See : https://technical.buildingsmart.org/standards/bcf/<br/>
   /// and : https://github.com/buildingSMART/BCF-XML/tree/master/Documentation<br/>
