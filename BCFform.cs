@@ -3,7 +3,6 @@ using System.IO;
 using System.Drawing;
 using System.Collections;
 using System.Windows.Forms;
-using System.Globalization;
 using BCFclass;
 
 namespace BCFviewer {
@@ -359,10 +358,14 @@ namespace BCFviewer {
     /// <param name="sender">Not used</param>
     /// <param name="args">Not used</param>
     private void About(Object sender, EventArgs args) {
+      /*
       MessageBox.Show("BCF File Viewer Version 1.1.0\n\n" +
                       "By Emmanuel Maschas\n" +
                       "November 2020\n\n" +
                       "Report issues at https://github.com/emaschas/BCFviewer/issues", "BCF File Viewer");
+      */
+      Form about = new AboutForm();
+      about.ShowDialog();
     }
 
     /// <summary> Move the vertical split to match the image ratio (Width / Height) </summary>
