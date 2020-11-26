@@ -178,10 +178,10 @@ namespace BCFclass {
     /// <summary> Full Name of the File (including path and extension) </summary>
     public string FullName;
     /// <summary> Index of the File (set by BCFfileList for sorting purposes) </summary>
-    public int Index = 0;
+    public int Index;
 
     /// <summary> ZipFile of the BCF file in progress </summary>
-    public ZipArchive bcfzip;
+    private ZipArchive bcfzip;
 
     #region "BCF Utilities"
 
