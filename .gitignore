@@ -2,6 +2,9 @@
 *.code-workspace
 .vscode/
 
+#bin
+bin/
+
 # Prerequisites
 *.d
 

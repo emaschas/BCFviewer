@@ -47,7 +47,7 @@ namespace BCFclass {
     /// <summary>Globally Unique Identifier</summary>
     public string GUID             {get;set;}
     /// <summary>Index of the viewpoint</summary>
-    public string Index            {get;set;}
+    public int    Index            {get;set;}
     /// <summary>Visualization information file name</summary>
     public string Bcfv             {get;set;}
     /// <summary>Snapshot file name</summary>
@@ -126,9 +126,6 @@ namespace BCFclass {
   /// <item><term><see cref="Viewpoints"/></term><description>List of <see cref="Viewpoint">Viewpoints</see> associated to the Topic</description></item>
   /// </list>
   public class Topic {
-    /// <summary>ZipFile : Full name of the *.bcfzip file, source of this Topic<br/>
-    /// Since multiple BCF files may be appendedn this information is recorder for each individual Topic</summary>
-    public string ZipFile             {get;set;}
     /// <summary>Type of Topic</summary>
     /// <value><list type="bullet"><item>Comment</item><item>Issue</item><item>Request</item><item>Solution</item></list></value>
     public string TopicType           {get;set;}
@@ -140,7 +137,7 @@ namespace BCFclass {
     /// <summary>Priority of the Topic</summary>
     public string Priority            {get;set;}
     /// <summary>Index of the Topic</summary>
-    public string Index               {get;set;}
+    public int    Index               {get;set;}
     /// <summary>Date of creation of the Topic</summary>
     public string CreationDate        {get;set;}
     /// <summary>Author that created the Topic</summary>
@@ -159,11 +156,10 @@ namespace BCFclass {
 
   #endregion
 
-  /// <summary> Content of one or multiple BCF files. Contains a list of <see cref="Topic">Topics</see> in the property <see cref="TopicsList"/></summary>
+  /// <summary> Content of one BCF files. Contains a list of <see cref="Topic">Topics</see> in the property <see cref="TopicsList"/></summary>
   /// BCF : BIM Collaboration Format<br/>
   /// See : https://technical.buildingsmart.org/standards/bcf/<br/>
   /// and : https://github.com/buildingSMART/BCF-XML/tree/master/Documentation<br/>
-  /// </summary>
   /// There are two constructors :
   /// <list><item><see cref="BCFfile()"/> that creates an empty object </item>
   /// <item><see cref="BCFfile(string)">BCFfile(FileName)</see> that creates an object and reads the content of a BCF file.</item></list>
@@ -172,10 +168,20 @@ namespace BCFclass {
   /// And one property :
   /// <list><item><see cref="TopicsList"/> that references all the Topics that have been read and appended  with the above methods.</item></list>
   public class BCFfile {
-  //public partial class BCFfile : UserControl {
 
     /// <summary> List of BCF Topics loaded in the BCFfile object </summary>
     public List<Topic> TopicsList = new List<Topic>();
+    /// <summary> BCF version </summary>
+    public string Version;
+    /// <summary> Name of the File (without path and extension) </summary>
+    public string Name;
+    /// <summary> Full Name of the File (including path and extension) </summary>
+    public string FullName;
+    /// <summary> Index of the File (set by BCFfileList for sorting purposes) </summary>
+    public int Index = 0;
+
+    /// <summary> ZipFile of the BCF file in progress </summary>
+    public ZipArchive bcfzip;
 
     #region "BCF Utilities"
 
@@ -195,30 +201,91 @@ namespace BCFclass {
       foreach(XAttribute att in element.Attributes(attribute)) res = att.Value;
       return res;
     }
-    
-    /// <summary> Format the supplied <paramref name="ISOdate"/> ISO date in a readable string </summary>
-    /// <param name="ISOdate">Date in ISO format. Ex : 2014-10-16T14:35:29+00:00</param>
-    /// <returns>A string reprsenting the supplied <paramref name="ISOdate"/> ISO date</returns>
-    private string formatDate(string ISOdate) {
-      string res;
-      try { 
-        DateTime dat = DateTime.Parse(ISOdate);
-        res = dat.ToString("d", CultureInfo.CreateSpecificCulture("fr-FR")); 
-      }
-      catch { res = ISOdate; }
-      return res;
-    }
 
     #endregion
 
     #region "Read Routines"
+
+    /// <summary>Read Topic attributes and properties</summary>
+    private Topic ReadTopic(XElement Xtopic) {
+      Topic NewTopic = new Topic();
+      NewTopic.TopicType      = ReadATT(Xtopic, "TopicType");
+      NewTopic.TopicStatus    = ReadATT(Xtopic, "TopicStatus");
+      NewTopic.Title          = ReadXML(Xtopic, "Title");
+      NewTopic.Priority       = ReadXML(Xtopic, "Priority");
+      try{ 
+        NewTopic.Index        = int.Parse(ReadXML(Xtopic, "Index"));
+      } catch {
+        NewTopic.Index        = 0;
+      };
+      NewTopic.CreationDate   = ReadXML(Xtopic, "CreationDate");
+      NewTopic.CreationAuthor = ReadXML(Xtopic, "CreationAuthor");
+      NewTopic.ModifiedDate   = ReadXML(Xtopic, "ModifiedDate");
+      NewTopic.ModifiedAuthor = ReadXML(Xtopic, "ModifiedAuthor");
+      NewTopic.Description    = ReadXML(Xtopic, "Description");
+      if(NewTopic.ModifiedDate  =="-") NewTopic.ModifiedDate=NewTopic.CreationDate;
+      if(NewTopic.ModifiedAuthor=="-") NewTopic.ModifiedAuthor=NewTopic.CreationAuthor;
+      return NewTopic;
+    }
+
+    /// <summary>Read Comment attributes and properties</summary>
+    private Comment ReadComment(XElement Xcomment) {
+      Comment NewComment = new Comment();
+      NewComment.Text =           ReadXML(Xcomment, "Comment");
+      NewComment.Date =           ReadXML(Xcomment, "Date");
+      NewComment.Author =         ReadXML(Xcomment, "Author");
+      NewComment.ModifiedAuthor = ReadXML(Xcomment, "ModifiedAuthor");
+      NewComment.ModifiedDate =   ReadXML(Xcomment, "ModifiedDate");
+      if(NewComment.ModifiedAuthor=="-") NewComment.ModifiedAuthor=NewComment.Author;
+      if(NewComment.ModifiedDate  =="-") NewComment.ModifiedDate=NewComment.Date;
+      XElement vp = Xcomment.Element("Viewpoint");
+      NewComment.VPGuid = (vp != null ? ReadATT(vp, "Guid") : "-");
+      return NewComment;
+    }
+
+    /// <summary>Read Viewpoint attributes and properties</summary>
+    private Viewpoint ReadViewpoint(XElement Xviewpoint, string folder) {
+      Viewpoint NewViewpoint = new Viewpoint();
+      NewViewpoint.GUID     = ReadATT(Xviewpoint, "Guid");
+      NewViewpoint.Bcfv     = ReadXML(Xviewpoint, "Viewpoint");
+      NewViewpoint.Snapshot = ReadXML(Xviewpoint, "Snapshot");
+      if(NewViewpoint.Snapshot!="-") NewViewpoint.Snapshot = folder + NewViewpoint.Snapshot;
+      return NewViewpoint;
+    }
+
+    /// <summary>Read Viewpoint attributes and properties</summary>
+    private Bitmap ReadSnapshot(string filename) {
+      Bitmap image = null;
+      // Viewpoint-Image
+      if(filename != "-") {
+        ZipArchiveEntry snap = bcfzip.GetEntry(filename);
+        if(snap != null) image = new Bitmap(snap.Open());
+      }
+      return image;
+    }
+
+    /// <summary>Read File properties and Version</summary>
+    private void ReadFile() {
+      Name = Path.GetFileNameWithoutExtension(FullName) ;
+      Version = "-";
+      ZipArchiveEntry bcfversion = bcfzip.GetEntry("bcf.version");
+      if(bcfversion != null) {
+        XDocument Xbcfversion = XDocument.Load(bcfversion.Open());
+        if(Xbcfversion != null) {
+          XElement Xversion = Xbcfversion.Element("Version");
+          if(Xversion != null) {
+            Version = Xversion.Attribute("VersionId").Value;
+          }
+        }
+      }
+    }
 
     /// <summary> Read the Camera settings for the selected <paramref name="viewpoint"/>.bcfv file </summary>
     /// <param name="bcfzip">ZipArchive in which the bcfv file is located</param>
     /// <param name="filename">Name of bcfv viewpoint file within the ZIP archive</param>
     /// <param name="viewpoint">Viewpoint in which the camera settings will be stored</param>
     /// <returns>Nothing</returns>
-    private void readBCFV(ZipArchive bcfzip, string filename, Viewpoint viewpoint) {
+    private void ReadBCFV(string filename, Viewpoint viewpoint) {
       ZipArchiveEntry bcfvzip = bcfzip.GetEntry(filename);
       // Default values
       viewpoint.CamX = 0.0; viewpoint.CamY = 0.0; viewpoint.CamZ = 0.0;
@@ -255,103 +322,69 @@ namespace BCFclass {
       }
     }
     
-    /// <summary> Load or Append a BCF File </summary> 
+    /// <summary> Load a BCF File </summary> 
     /// <param name="FileName">Full path of the file to be loadded or appended </param>
-    /// <param name="Append">Load if <c>false</c> or Append if <c>true</c> </param>
     /// <returns>Nothing</returns>
-    public void ReadBCF(String FileName, Boolean Append) {
-      if(!Append) TopicsList.Clear();
-      using(ZipArchive bcfzip = ZipFile.OpenRead(FileName)) {
+    public void ReadBCF(String FileName) {
+      FullName = FileName;
+      TopicsList.Clear();
+      using(bcfzip = ZipFile.OpenRead(FileName)) {
+        ReadFile();
         foreach(ZipArchiveEntry entry in bcfzip.Entries) {
           if(entry.FullName.EndsWith("markup.bcf", StringComparison.OrdinalIgnoreCase)) {
             string folder = entry.FullName.Substring(0, entry.FullName.LastIndexOf("/") + 1);
             XDocument markup = XDocument.Load(entry.Open()); // Parse XML document
             // Topic
-            XElement topic = markup.Root.Element("Topic");
-            Topic NewTopic = new Topic();
-            NewTopic.ZipFile        = FileName;
-            NewTopic.TopicType      = ReadATT(topic, "TopicType");
-            NewTopic.TopicStatus    = ReadATT(topic, "TopicStatus");
-            NewTopic.Title          = ReadXML(topic, "Title");
-            NewTopic.Priority       = ReadXML(topic, "Priority");
-            NewTopic.Index          = ReadXML(topic, "Index");
-            NewTopic.CreationDate   = ReadXML(topic, "CreationDate");
-            NewTopic.CreationAuthor = ReadXML(topic, "CreationAuthor");
-            NewTopic.ModifiedDate   = ReadXML(topic, "ModifiedDate");
-            NewTopic.ModifiedAuthor = ReadXML(topic, "ModifiedAuthor");
-            NewTopic.Description    = ReadXML(topic, "Description");
-            if(NewTopic.ModifiedDate  =="-") NewTopic.ModifiedDate=NewTopic.CreationDate;
-            if(NewTopic.ModifiedAuthor=="-") NewTopic.ModifiedAuthor=NewTopic.CreationAuthor;
-            // Comments
-            NewTopic.Comments = new List<Comment>();
-            foreach(XElement com in markup.Root.Elements("Comment")) {
-              Comment NewComment = new Comment();
-              NewComment.Text =           ReadXML(com, "Comment");
-              NewComment.Date =           ReadXML(com, "Date");
-              NewComment.Author =         ReadXML(com, "Author");
-              NewComment.ModifiedAuthor = ReadXML(com, "ModifiedAuthor");
-              NewComment.ModifiedDate =   ReadXML(com, "ModifiedDate");
-              if(NewComment.ModifiedAuthor=="-") NewComment.ModifiedAuthor=NewComment.Author;
-              if(NewComment.ModifiedDate  =="-") NewComment.ModifiedDate=NewComment.Date;
-              XElement vp = com.Element("Viewpoint");
-              NewComment.VPGuid = (vp != null ? ReadATT(vp, "Guid") : "-");
-              NewTopic.Comments.Add(NewComment);
-            }
-            // Viewpoints
-            NewTopic.Viewpoints = new List<Viewpoint>();
-            // Search for Viewpoints in Version 2.0
-            foreach(XElement vp in markup.Root.Elements("Viewpoints")) {
-              Viewpoint NewVP = new Viewpoint();
-              NewVP.GUID     = ReadATT(vp, "Guid");
-              NewVP.Bcfv     = ReadXML(vp, "Viewpoint");
-              NewVP.Snapshot = ReadXML(vp, "Snapshot");
-              if(NewVP.Snapshot!="-") NewVP.Snapshot = folder + NewVP.Snapshot;
-              readBCFV(bcfzip, folder + NewVP.Bcfv, NewVP);
-              // Viewpoint-Image
-              try {
-                if(NewVP.Snapshot!="-") {
-                  ZipArchiveEntry snap = bcfzip.GetEntry(NewVP.Snapshot);
-                  Bitmap img = new Bitmap(snap.Open());
-                  NewVP.Image = img;
-                }
-              } catch {
-                MessageBox.Show("Error Image");
+            XElement Xtopic = markup.Root.Element("Topic");
+            if(Xtopic != null) {
+              Topic NewTopic = ReadTopic(Xtopic);
+              // Comments
+              NewTopic.Comments = new List<Comment>();
+              foreach(XElement Xcomment in markup.Root.Elements("Comment")) {
+                Comment NewComment = ReadComment(Xcomment);
+                NewTopic.Comments.Add(NewComment);
               }
-              NewTopic.Viewpoints.Add(NewVP);
-            }
-            // If Viewpoints is empty : 
-            // try version 1.0 BCF : viewpoint.bcfv and snapshot.png files.
-            if(NewTopic.Viewpoints.Count == 0) {
-              ZipArchiveEntry bcfvzip = bcfzip.GetEntry(folder + "viewpoint.bcfv");
-              if(bcfvzip!=null) { // Found viewpoint.bcfv !
-                Viewpoint NewVP = new Viewpoint();
-                NewVP.GUID = "viewpoint.bcfv"; // pseudo att.
-                NewVP.Bcfv = "viewpoint.bcfv";
-                if(bcfzip.GetEntry(folder + "snapshot.png") != null) {
-                  NewVP.Snapshot = folder + "snapshot.png";
-                  ZipArchiveEntry snap = bcfzip.GetEntry(NewVP.Snapshot);
-                  Bitmap img = new Bitmap(snap.Open());
-                  NewVP.Image = img;
-                } else {
-                  NewVP.Snapshot = "-";
-                  NewVP.Image = null;
-                }
-                readBCFV(bcfzip, folder + NewVP.Bcfv, NewVP);
-                NewTopic.Viewpoints.Add(NewVP);
+              // Viewpoints
+              NewTopic.Viewpoints = new List<Viewpoint>();
+              // Search for Viewpoints for Version 2.0
+              foreach(XElement vp in markup.Root.Elements("Viewpoints")) {
+                Viewpoint NewViewpoint = ReadViewpoint(vp, folder);
+                ReadBCFV(folder + NewViewpoint.Bcfv, NewViewpoint);
+                NewViewpoint.Image = ReadSnapshot(NewViewpoint.Snapshot);
+                if(NewViewpoint.Image == null) NewViewpoint.Snapshot = "-"; // Image not found !
+                NewTopic.Viewpoints.Add(NewViewpoint);
               }
-            }
-            // Link Viewpoint and Comments
-            foreach(Comment com in NewTopic.Comments) {
-              if(com.VPGuid != "-") {
-                foreach (Viewpoint vp in NewTopic.Viewpoints) {
-                  if(vp.GUID == com.VPGuid) com.Viewpoint = vp;
+              // If Viewpoints is empty : 
+              // try version 1.0 BCF : viewpoint.bcfv files.
+              if(NewTopic.Viewpoints.Count == 0 && bcfzip.GetEntry(folder+"viewpoint.bcfv") != null) {
+                // Found viewpoint.bcfv !
+                Version = "1.0";
+                Viewpoint NewViewpoint = new Viewpoint();
+                NewViewpoint.GUID     = "viewpointbcfv"; // pseudo GUID
+                NewViewpoint.Bcfv     = "viewpoint.bcfv";
+                NewViewpoint.Snapshot = folder + "snapshot.png";
+                ReadBCFV(folder + NewViewpoint.Bcfv, NewViewpoint);
+                NewViewpoint.Image = ReadSnapshot(NewViewpoint.Snapshot);
+                if(NewViewpoint.Image == null) NewViewpoint.Snapshot = "-"; // Image not found !
+                NewTopic.Viewpoints.Add(NewViewpoint);
+              }
+              // Link Viewpoint and Comments
+              foreach(Comment com in NewTopic.Comments) if(com.VPGuid != "-") {
+                foreach (Viewpoint vp in NewTopic.Viewpoints) if(vp.GUID == com.VPGuid) {
+                  com.Viewpoint = vp;
                 }
               }
+              TopicsList.Add(NewTopic);
             }
-            TopicsList.Add(NewTopic);
           }
         }
       }
+    }
+
+    /// <summary> Clear the Topics List </summary> 
+    /// <returns> Nothing </returns>
+    public void NewBCF() {
+      TopicsList.Clear();
     }
 
     #endregion
@@ -361,7 +394,7 @@ namespace BCFclass {
     /// <summary> Create a BCFfile object, and read the content of the file designetd by <paramref name="FileName"/> </summary>
     /// <param name="FileName">Name of the BCF file to read</param>
     public BCFfile(string FileName) {
-      this.ReadBCF(FileName, false);
+      this.ReadBCF(FileName);
     }
 
     /// <summary> Create an empty BCFfile object </summary>
@@ -369,6 +402,30 @@ namespace BCFclass {
 
     #endregion
 
+  }
+
+  /// <summary> Collection of multiple <see cref="BCFfile">BCF files.</see></summary>
+  public class BCFfileList {
+    
+    /// <summary> List of <see cref="BCFfile">BCF files</see> in the list.</summary>
+    public List <BCFfile> BCFfiles {get;set;}
+
+    /// <summary> Clear the list of <see cref="BCFfile">BCF files.</see></summary>
+    public void Clear() {
+      BCFfiles.Clear();
+    }
+
+    /// <summary> Add the content of <paramref name="FileName"/> in a new <see cref="BCFfile"/> object and add it to the set.</see>.</summary>
+    /// <param name="FileName">Name of the BCF file to be loaded.</param>
+    public void Add(string FileName) {
+      BCFfile bcf = new BCFfile(FileName);
+      BCFfiles.Add(bcf);
+      bcf.Index = BCFfiles.Count - 1;
+    }
+
+    public BCFfileList() {
+      BCFfiles = new List<BCFfile>();
+    }
   }
 
 }

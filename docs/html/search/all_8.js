@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['priority_23',['Priority',['../class_b_c_fclass_1_1_topic.html#a8b48e700b9e10d74b39880c7772a79b5',1,'BCFclass::Topic']]]
+  ['newbcf_27',['NewBCF',['../class_b_c_fclass_1_1_b_c_ffile.html#a30249bf9f33f1b3446dbcdd6e25342b3',1,'BCFclass::BCFfile']]]
 ];

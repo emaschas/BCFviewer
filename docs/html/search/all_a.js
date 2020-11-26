@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['snapshot_25',['Snapshot',['../class_b_c_fclass_1_1_viewpoint.html#a78ef853139237ffaa94678306eb62445',1,'BCFclass::Viewpoint']]]
+  ['readbcf_29',['ReadBCF',['../class_b_c_fclass_1_1_b_c_ffile.html#aaf0ce1cfd37b570795b15c38046d4acb',1,'BCFclass::BCFfile']]]
 ];
