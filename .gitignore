@@ -4,6 +4,8 @@
 
 #bin
 bin/
+bin/Debug/
+bin/Release/
 
 # Prerequisites
 *.d
