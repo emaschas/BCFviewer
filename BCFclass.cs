@@ -10,7 +10,7 @@
 /// https://technical.buildingsmart.org/standards/bcf/<br/>
 /// The BCF file schema is detailed in :<br/>
 /// https://github.com/buildingSMART/BCF-XML/tree/master/Documentation<br/>
-/// <hr>
+/// <hr/>
 /// By Emmanuel Maschas - 25-11-2020
 
 #region "Usings"
@@ -415,7 +415,7 @@ namespace BCFclass {
       BCFfiles.Clear();
     }
 
-    /// <summary> Add the content of <paramref name="FileName"/> in a new <see cref="BCFfile"/> object and add it to the set.</see>.</summary>
+    /// <summary> Add the content of <paramref name="FileName"/> in a new <see cref="BCFfile"> object and add it to the set.</see>.</summary>
     /// <param name="FileName">Name of the BCF file to be loaded.</param>
     public void Add(string FileName) {
       BCFfile bcf = new BCFfile(FileName);
@@ -423,6 +423,7 @@ namespace BCFclass {
       bcf.Index = BCFfiles.Count - 1;
     }
 
+    /// <summary> Create an empty <see cref="BCFfile"> object.</see>.</summary>
     public BCFfileList() {
       BCFfiles = new List<BCFfile>();
     }

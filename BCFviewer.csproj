@@ -10,6 +10,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>icons\BCFicon.ico</ApplicationIcon>
     <!--GenerateDocumentationFile>true</GenerateDocumentationFile-->
+    <DocumentationFile>DOC.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
