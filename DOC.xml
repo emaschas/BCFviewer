@@ -404,7 +404,7 @@
             <param name="FileName">Name of the BCF file to be loaded.</param>
         </member>
         <member name="M:BCFclass.BCFfileList.#ctor">
-            <summary> Create an empty <see cref="T:BCFclass.BCFfile"> object.</see>.</summary>
+            <summary> Create an empty <see cref="T:BCFclass.BCFfile"/> object.</summary>
         </member>
     </members>
 </doc>

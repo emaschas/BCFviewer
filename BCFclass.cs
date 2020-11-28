@@ -423,7 +423,7 @@ namespace BCFclass {
       bcf.Index = BCFfiles.Count - 1;
     }
 
-    /// <summary> Create an empty <see cref="BCFfile"> object.</see>.</summary>
+    /// <summary> Create an empty <see cref="BCFfile"/> object.</summary>
     public BCFfileList() {
       BCFfiles = new List<BCFfile>();
     }
