@@ -164,9 +164,10 @@ namespace BCFclass {
   /// <list><item><see cref="BCFfile()"/> that creates an empty object </item>
   /// <item><see cref="BCFfile(string)">BCFfile(FileName)</see> that creates an object and reads the content of a BCF file.</item></list>
   /// The class provides one method :
-  /// <list><item><see cref="ReadBCF()"/> to read or append a BCF file into the object.</item></list>
+  /// <list><item><see cref="ReadBCF(string)"/> to read a BCF file into the object.</item></list>
   /// And one property :
   /// <list><item><see cref="TopicsList"/> that references all the Topics that have been read and appended  with the above methods.</item></list>
+  /// To work with multiple file use the <see cref="BCFfileList"/> class.
   public class BCFfile {
 
     /// <summary> List of BCF Topics loaded in the BCFfile object </summary>
@@ -281,7 +282,6 @@ namespace BCFclass {
     }
 
     /// <summary> Read the Camera settings for the selected <paramref name="viewpoint"/>.bcfv file </summary>
-    /// <param name="bcfzip">ZipArchive in which the bcfv file is located</param>
     /// <param name="filename">Name of bcfv viewpoint file within the ZIP archive</param>
     /// <param name="viewpoint">Viewpoint in which the camera settings will be stored</param>
     /// <returns>Nothing</returns>
