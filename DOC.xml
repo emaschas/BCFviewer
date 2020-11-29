@@ -7,6 +7,9 @@
         <member name="T:BCFviewer.AboutForm">
             <Summary> Main class of the "About" form </Summary>
         </member>
+        <member name="M:BCFviewer.AboutForm.#ctor">
+            <Summary> "About" Form constructor </Summary>
+        </member>
         <member name="F:BCFviewer.AboutForm.components">
             <summary> Required designer variable. </summary>
         </member>
@@ -62,6 +65,11 @@
         </member>
         <member name="T:BCFviewer.BCFform.BCFsorter">
             <summary> Node sorter to sort BCF by File Index, Topics Index, and Comment Date (ascending)</summary>
+        </member>
+        <member name="M:BCFviewer.BCFform.BCFsorter.Compare(System.Object,System.Object)">
+            <summary> Compare two <see cref="T:BCFviewer.BCFTreeNode"/> refering to a File, a Topic, or a Comment</summary>
+            The comparison is done on :
+            <list><item>File Index,</item><item>Topics Index,</item><item>Comment Date (ascending)</item></list>
         </member>
         <member name="M:BCFviewer.BCFform.#ctor">
             <summary> BCFform constructor </summary>
@@ -322,9 +330,10 @@
             <list><item><see cref="M:BCFclass.BCFfile.#ctor"/> that creates an empty object </item>
             <item><see cref="M:BCFclass.BCFfile.#ctor(System.String)">BCFfile(FileName)</see> that creates an object and reads the content of a BCF file.</item></list>
             The class provides one method :
-            <list><item><see cref="!:ReadBCF()"/> to read or append a BCF file into the object.</item></list>
+            <list><item><see cref="M:BCFclass.BCFfile.ReadBCF(System.String)"/> to read a BCF file into the object.</item></list>
             And one property :
             <list><item><see cref="F:BCFclass.BCFfile.TopicsList"/> that references all the Topics that have been read and appended  with the above methods.</item></list>
+            To work with multiple file use the <see cref="T:BCFclass.BCFfileList"/> class.
         </member>
         <member name="F:BCFclass.BCFfile.TopicsList">
             <summary> List of BCF Topics loaded in the BCFfile object </summary>
@@ -369,7 +378,6 @@
         </member>
         <member name="M:BCFclass.BCFfile.ReadBCFV(System.String,BCFclass.Viewpoint)">
             <summary> Read the Camera settings for the selected <paramref name="viewpoint"/>.bcfv file </summary>
-            <param name="bcfzip">ZipArchive in which the bcfv file is located</param>
             <param name="filename">Name of bcfv viewpoint file within the ZIP archive</param>
             <param name="viewpoint">Viewpoint in which the camera settings will be stored</param>
             <returns>Nothing</returns>

@@ -85,6 +85,9 @@ namespace BCFviewer {
 
     /// <summary> Node sorter to sort BCF by File Index, Topics Index, and Comment Date (ascending)</summary>
     public class BCFsorter : IComparer {
+      /// <summary> Compare two <see cref="BCFTreeNode"/> refering to a File, a Topic, or a Comment</summary>
+      /// The comparison is done on :
+      /// <list><item>File Index,</item><item>Topics Index,</item><item>Comment Date (ascending)</item></list>
       public int Compare(object x, object y) {
         int result = 0;
         BCFTreeNode tx = x as BCFTreeNode;

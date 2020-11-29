@@ -8,6 +8,7 @@ namespace BCFviewer {
 
   /// <Summary> Main class of the "About" form </Summary>
   public partial class AboutForm : Form {
+    /// <Summary> "About" Form constructor </Summary>
     public AboutForm() {
       InitializeComponent();
       StartPosition = FormStartPosition.CenterScreen;
