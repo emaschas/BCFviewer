@@ -4,13 +4,18 @@
     <Title>BCFviewer</Title>
     <Version>1.1.0</Version>
     <OutputType>WinExe</OutputType>
-    <Configuration>Debug</Configuration>
     <Platform>AnyCPU</Platform>
+    <Configuration>Debug</Configuration>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>icons\BCFicon.ico</ApplicationIcon>
     <!--GenerateDocumentationFile>true</GenerateDocumentationFile-->
   </PropertyGroup>
+
+<PropertyGroup>
+  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+  <PublishSingleFile>true</PublishSingleFile>
+</PropertyGroup>
 
   <ItemGroup>
     <None Include="icons\BCFicon.ico">
