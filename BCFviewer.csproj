@@ -9,7 +9,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>icons\BCFicon.ico</ApplicationIcon>
-    <DocumentationFile>DOC.xml</DocumentationFile>
   </PropertyGroup>
 
 <PropertyGroup>

@@ -1,8 +1,8 @@
 ﻿/// \mainpage 
-/// # BCFclass
+/// # Classes
 /// The BCFclass class contains the structures and the methods to read a BCF file.
 ///
-/// In addition, the following classes have been extracted from the BCF file schema (see [References](#References))
+/// In addition, the following classes have been extracted from the BCF file schema (see [References](#Refs))
 /// - BCFversion : Version of the file
 /// - BCFmarkup : Topics, Comments and Viewpoints
 /// - BCFvisinfo : Visualisation information
@@ -12,14 +12,14 @@
 /// More specifically, BCF works by transferring XML formatted data, which is contextualized information about an issue or problem directly referencing a view, captured via PNG and IFC coordinates, and elements of a BIM, as referenced via their IFC GUIDs, from one application to another.<br/>
 /// BCF files contain the issues or problems (deisgnated as topics" but not the BIM model itself.
 ///
-/// ## References {#References}
+/// ## References {#Refs}
 /// __Description of BCF files and their usage :__<br/>
-/// <https://technical.buildingsmart.org/standards/bcf>
+/// https://technical.buildingsmart.org/standards/bcf
 ///
 /// __The BCF file schema is detailed in :__<br/>
-/// <https://github.com/buildingSMART/BCF-XML/tree/master/Documentation>
+/// https://github.com/buildingSMART/BCF-XML/tree/master/Documentation
 ///
-/// ## Application Example:
+/// # Application Example:
 /// ![Screenshot Image](Screenshot.png)
 /// <hr>
 /// By Emmanuel Maschas - 16-12-2020
@@ -156,13 +156,11 @@ namespace BCFclass {
         Version.VersionId = "1.0";
         Version.DetailedVersion = "Undefined Version";
       }
-
     }
 
-    /// <summary> Read the Camera settings for the selected <paramref name="viewpoint"/>.bcfv file </summary>
+    /// <summary> Read the Camera settings for the selected <paramref name="filename"/> (.bcfv) file </summary>
     /// <param name="filename">Name of bcfv viewpoint file within the ZIP archive</param>
-    /// <param name="viewpoint">Viewpoint in which the camera settings will be stored</param>
-    /// <returns>Nothing</returns>
+    /// <returns>The content of the bcfv file in a BCFvisinfo.VisualizationInfo object</returns>
     private BCFvisinfo.VisualizationInfo ReadBCFV(string filename) {
       ZipArchiveEntry entry = bcfzip.GetEntry(filename);
       XmlSerializer serializer = new XmlSerializer(typeof(BCFvisinfo.VisualizationInfo));
