@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['modifiedauthor_26',['ModifiedAuthor',['../class_b_c_fclass_1_1_comment.html#a6fc24eb8601283bdee672e03005c9bc5',1,'BCFclass.Comment.ModifiedAuthor()'],['../class_b_c_fclass_1_1_topic.html#a036c678baaf49d786ddf5cded7344885',1,'BCFclass.Topic.ModifiedAuthor()']]],
-  ['modifieddate_27',['ModifiedDate',['../class_b_c_fclass_1_1_comment.html#a61c2bef65d855aa85220a6fa3855938c',1,'BCFclass.Comment.ModifiedDate()'],['../class_b_c_fclass_1_1_topic.html#abc798e3b9c7686de9ae9c6862e0cf856',1,'BCFclass.Topic.ModifiedDate()']]]
+  ['idocumentreference_44',['IDocumentReference',['../interface_b_c_fmarkup_1_1_i_document_reference.html',1,'BCFmarkup']]],
+  ['ifileattributes_45',['IFileAttributes',['../interface_b_c_fmarkup_1_1_i_file_attributes.html',1,'BCFmarkup']]],
+  ['image_46',['Image',['../class_b_c_fmarkup_1_1_view_point.html#a960f44d704af40a9a964961ebaf5f300',1,'BCFmarkup::ViewPoint']]],
+  ['imagelist_47',['ImageList',['../class_b_c_fclass_1_1_b_c_ffile.html#af8694ba8204b4c536b78e67e00d2fb21',1,'BCFclass::BCFfile']]],
+  ['index_48',['Index',['../class_b_c_fclass_1_1_b_c_ffile.html#acce73894bd0b0ffc1492d0c146add368',1,'BCFclass.BCFfile.Index()'],['../class_b_c_fmarkup_1_1_view_point.html#a5daac75003ef095c038f4815dbdf0835',1,'BCFmarkup.ViewPoint.Index()'],['../class_b_c_fmarkup_1_1_topic.html#a6d10cedbb3f1724551ec080379922571',1,'BCFmarkup.Topic.Index()']]]
 ];

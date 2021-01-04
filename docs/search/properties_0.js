@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['author_62',['Author',['../class_b_c_fclass_1_1_comment.html#abffaf14c4d35c0f4a3db378546bc6a63',1,'BCFclass::Comment']]]
+  ['assignedto_143',['AssignedTo',['../class_b_c_fmarkup_1_1_topic.html#a74100721681d0562d78444be827c4a1f',1,'BCFmarkup::Topic']]],
+  ['author_144',['Author',['../class_b_c_fmarkup_1_1_comment.html#a3294fa94f0e739ba042d2de1973d3a2c',1,'BCFmarkup::Comment']]]
 ];
