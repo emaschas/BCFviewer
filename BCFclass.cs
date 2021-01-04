@@ -10,7 +10,6 @@
 /// # BCF Files
 /// BIM Collaboration Format (BCF) allows different BIM applications to communicate model-based issues with each other by leveraging IFC models that have been previously shared among project collaborators.<br/>
 /// More specifically, BCF works by transferring XML formatted data, which is contextualized information about an issue or problem directly referencing a view, captured via PNG and IFC coordinates, and elements of a BIM, as referenced via their IFC GUIDs, from one application to another.<br/>
-<<<<<<< HEAD
 /// BCF files contain the issues or problems (deisgnated as topics" but not the BIM model itself.
 ///
 /// ## References {#References}
@@ -24,16 +23,6 @@
 /// ![Screenshot Image](Screenshot.png)
 /// <hr>
 /// By Emmanuel Maschas - 16-12-2020
-=======
-/// BCF files contain the issues or problems (deisgnated as topics" but not the BIM model itself.<br/>
-/// <h2>References</h2>
-/// Decsription of BCF files and their usage : <br/>
-/// https://technical.buildingsmart.org/standards/bcf/<br/>
-/// The BCF file schema is detailed in :<br/>
-/// https://github.com/buildingSMART/BCF-XML/tree/master/Documentation<br/>
-/// <hr/>
-/// By Emmanuel Maschas - 25-11-2020
->>>>>>> a0234a900266fbeb90475bca59a0ccf0dcf67362
 
 #region "Usings"
 using System;
@@ -112,7 +101,6 @@ namespace BCFvisinfo {
     }
   }
 
-<<<<<<< HEAD
 }
 
 #endregion
@@ -123,22 +111,6 @@ namespace BCFclass {
 
   /// <summary> Content of a BCF file </summary>
   /// _In addition to the classes extracted from the BCF schema_
-=======
-  #endregion
-
-  /// <summary> Content of one BCF files. Contains a list of <see cref="Topic">Topics</see> in the property <see cref="TopicsList"/></summary>
-  /// BCF : BIM Collaboration Format<br/>
-  /// See : https://technical.buildingsmart.org/standards/bcf/<br/>
-  /// and : https://github.com/buildingSMART/BCF-XML/tree/master/Documentation<br/>
-  /// There are two constructors :
-  /// <list><item><see cref="BCFfile()"/> that creates an empty object </item>
-  /// <item><see cref="BCFfile(string)">BCFfile(FileName)</see> that creates an object and reads the content of a BCF file.</item></list>
-  /// The class provides one method :
-  /// <list><item><see cref="ReadBCF(string)"/> to read a BCF file into the object.</item></list>
-  /// And one property :
-  /// <list><item><see cref="TopicsList"/> that references all the Topics that have been read and appended  with the above methods.</item></list>
-  /// To work with multiple file use the <see cref="BCFfileList"/> class.
->>>>>>> a0234a900266fbeb90475bca59a0ccf0dcf67362
   public class BCFfile {
 
     /// <summary> List of BCF markups in the BCFfile object </summary>
