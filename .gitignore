@@ -1,7 +1,3 @@
-# VSC workspace
-*.code-workspace
-.vscode/
-
 #bin
 bin/
 bin/Debug/

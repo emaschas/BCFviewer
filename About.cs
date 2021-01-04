@@ -10,6 +10,9 @@ namespace BCFviewer {
   public partial class AboutForm : Form {
     public AboutForm() {
       InitializeComponent();
+      AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      ClientSize = new System.Drawing.Size(400, 300);
+      Text = "BCF Viewer - About"; // Title
       StartPosition = FormStartPosition.CenterScreen;
       FormBorderStyle = FormBorderStyle.FixedDialog;
       MinimizeBox = false;
@@ -38,17 +41,39 @@ namespace BCFviewer {
                  "November 2020\n\n" +
                  "Report issues at https://github.com/emaschas/BCFviewer/issues";
       txt.TabStop = false;
-      txt.LinkClicked += new LinkClickedEventHandler(report);
+      txt.LinkClicked += new LinkClickedEventHandler(OpenReportLink);
       vsp.Panel1.Controls.Add(img);
       vsp.Panel2.Controls.Add(txt);
       Controls.Add(vsp);
     }
-    private void report(object sender, LinkClickedEventArgs args) {
+
+    private void OpenReportLink(object sender, LinkClickedEventArgs args) {
       var psi = new System.Diagnostics.ProcessStartInfo {
         FileName = args.LinkText,
         UseShellExecute = true
       };
       System.Diagnostics.Process.Start(psi);
     }
+    
+    #region Windows Form Designer
+      
+    /// <summary> Required designer variable. </summary>
+    private System.ComponentModel.IContainer components = null;
+
+    /// <summary> Clean up any resources being used. </summary>
+    /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+    protected override void Dispose(bool disposing) {
+      if(disposing && (this.components != null)) {
+        this.components.Dispose();
+      }
+      base.Dispose(disposing);
+    }
+
+    /// <summary> Required method for Designer support - do not modify. </summary>
+    private void InitializeComponent() {
+      this.components = new System.ComponentModel.Container();
+    }
+
+    #endregion
   }
 }
