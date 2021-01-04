@@ -1,7 +1,6 @@
 #bin
 bin/
-bin/Debug/
-bin/Release/
+bin/*/
 
 # Prerequisites
 *.d
