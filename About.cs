@@ -35,9 +35,9 @@ namespace BCFviewer {
       txt.Dock = DockStyle.Fill;
       txt.BorderStyle = BorderStyle.None;
       txt.ReadOnly = true;
-      txt.Text = "BCF File Viewer Version 1.1.0\n\n" +
+      txt.Text = "BCF File Viewer Version 1.2.0\n\n" +
                  "By Emmanuel Maschas\n" +
-                 "November 2020\n\n" +
+                 "December 2020\n\n" +
                  "Report issues at https://github.com/emaschas/BCFviewer/issues";
       txt.TabStop = false;
       txt.LinkClicked += new LinkClickedEventHandler(OpenReportLink);
