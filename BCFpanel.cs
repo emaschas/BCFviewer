@@ -181,7 +181,7 @@ namespace BCFpanel {
       Hsplit.Panel2.Controls.Add(Vsplit);
       parent.Controls.Add(Hsplit);
       // Panel
-      parent.MinimumSize = new Size(400, 400);
+      parent.MinimumSize = new Size(200, 200);
       // Panel resize handler
       parent.Resize += new EventHandler(BCFpanel_Resize);
       // Resize picture
