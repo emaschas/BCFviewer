@@ -11,7 +11,12 @@ namespace BCFviewer {
   /// <Summary> Main class of the BCFform </Summary>
   public partial class BCFform : Form {
 
+    /// <summary> Required designer variable. </summary>
+    private System.ComponentModel.IContainer components = null;
+
+    /// <summary> Main Panel. </summary>
     private Panel mainpanel;
+    /// <summary> Main Panel components. </summary>
     private BCFpanelContent panelcontent;
 
     /// <summary> BCFform constructor </summary>
@@ -42,8 +47,6 @@ namespace BCFviewer {
       menu1.DropDownItems.Add(smenu13);
       ((ToolStripDropDownMenu)(menu1.DropDown)).ShowImageMargin = false;
       ((ToolStripDropDownMenu)(menu1.DropDown)).ShowCheckMargin = true;
-      //ms.MdiWindowListItem = menu1;
-      //ms.MdiWindowListItem = menu2;
       strip.Items.Add(menu1);
       strip.Items.Add(menu2);
       strip.Dock = DockStyle.Top;
@@ -52,11 +55,12 @@ namespace BCFviewer {
       mainpanel = new Panel();
       mainpanel.TabIndex = 0;
       mainpanel.Dock = DockStyle.Fill;
+      mainpanel.MinimumSize = new Size(200, 200);
       //-----------------------
       this.Controls.Add(mainpanel);
       this.Controls.Add(strip);
       // Form
-      this.MinimumSize = new Size(400, 400);
+      this.MinimumSize = new Size(300, 300);
       // Fill then Panel
       panelcontent = new BCFpanelContent(mainpanel);
     }
@@ -110,6 +114,30 @@ namespace BCFviewer {
     /// <param name="args">Not used</param>
     private void Quit_Menu(Object sender, EventArgs args) {
       this.Close();
+    }
+
+    /// <summary> Clean up any resources being used. </summary>
+    /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+    protected override void Dispose(bool disposing) {
+      if(disposing && (this.components != null)) {
+        this.components.Dispose();
+      }
+      base.Dispose(disposing);
+    }
+
+    #endregion
+
+    #region Windows Form Designer generated code
+
+    /// <summary>
+    ///  Required method for Designer support - do not modify
+    ///  the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent() {
+      this.components = new System.ComponentModel.Container();
+      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.ClientSize = new System.Drawing.Size(900, 600);
+      this.Text = "BCF Viewer"; // Title
     }
 
     #endregion
